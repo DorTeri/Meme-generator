@@ -1,4 +1,6 @@
 .main-header {
+    position: sticky;
+    top: 0;
     background-color: rgb(0, 0, 0);
     height: 100px;
     margin-bottom: 50px;
@@ -14,9 +16,17 @@
     text-transform: uppercase;
 }
 
+.main-nav {
+    margin-inline-start: auto;
+}
+
 .main-menu a:hover {
     color: red;
     transition: .6s;
+}
+
+.nav {
+    position: relative;
 }
 
 .main-menu a:hover::before {
@@ -31,6 +41,8 @@
 }
 
 .btn-toggle {
+    position: absolute;
+    right: 0;
     color: white;
     font-size: 1.5rem;
     background-color: inherit;

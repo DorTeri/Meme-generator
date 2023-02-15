@@ -4,12 +4,15 @@
 @import 'logo.css';
 @import 'screen.css';
 @import 'grid.css';
+@import 'editor.css';
+@import 'btn-toggle.css';
 
 * {
     box-sizing: border-box;
 }
 
 body {
+    overflow-x: hidden;
     margin: 0;
 }
 

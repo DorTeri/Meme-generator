@@ -1,8 +1,9 @@
 .main-screen {
     position: fixed;
     top: 0;
+    bottom: 0;
     right: 0;
-    width: 30%;
+    width: 50%;
     height: 100%;
     background-color: rgb(0 0 0 / 60%);
     cursor: pointer;
@@ -12,13 +13,36 @@
     transition: opacity .6s;
 }
 
-.main-screen a {
-    color: inherit;
+.screen-items a {
+    display: block;
+    font-family: helvetica, arial;
+    font-weight: bold;
+    padding: 10px 100% 20px 10px;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
+    background-color: rgb(0 0 0 / 0%);
+    transition: .6s;
+}
+
+.screen-items a:hover {
+    background-color: rgb(0 0 0 / 100%);
 }
 
 body.menu-open .main-screen {
     pointer-events: auto;
     opacity: 1;
+}
+
+.screen-content {
+    position: fixed;
+    width: 50%;
+    top: 100px;
+    right: -50%;
+    background-color: inherit;
+    transition: 1s;
+} 
+
+.open-content {
+    right: 0;
 }
