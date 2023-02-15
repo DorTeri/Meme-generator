@@ -38,6 +38,7 @@ function hideEditor() {
     elGallery.classList.remove('hidden')
 }
 
-function toggleMenu() {
+function toggleMenu(btn) {
     document.body.classList.toggle('menu-open');
+    btn.innerText = 'X'
 }

@@ -1,0 +1,54 @@
+.main-header {
+    background-color: rgb(0, 0, 0);
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+.main-header .main-menu a {
+    position: relative;
+    font-family: helvetica, arial;
+    font-weight: bold;
+    padding: 40px 30px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.main-menu a:hover {
+    color: red;
+    transition: .6s;
+}
+
+.main-menu a:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: red;
+    animation: grow .3s linear;
+}
+
+.btn-toggle {
+    color: white;
+    font-size: 1.5rem;
+    background-color: inherit;
+    transition: .5s;
+}
+
+.btn-toggle:hover {
+    cursor: pointer;
+    color: red;
+    border: 2px solid red;
+}
+
+@keyframes grow {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

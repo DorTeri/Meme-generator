@@ -7,31 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a064c61b9e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
-    <title>Meme generator</title>
+    <title>Meme generaDor</title>
 </head>
 
-<body onload="onInit()">
+<body class="main-layout" onload="onInit()">
 
     <div class="main-screen" onclick="toggleMenu()">
         <ul class="main-menu clean-list">
             <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
+            <li><a href="#">Memes</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </div>
 
-    <header class="main-header flex space-between align-center">
-        <div class="logo">Meme generaDor</div>
-        <nav class="main-nav">
-            <ul class="main-menu flex clean-list">
-                <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
-        <button type="button" onclick="toggleMenu()">☰</button>
+    <header class="main-header main-layout full">
+        <div class="flex space-between align-center">
+            <div class="logo"><span>Meme genera</span>Dor</div>
+            <nav class="main-nav">
+                <ul class="main-menu flex clean-list">
+                    <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <button class="btn-toggle" type="button" onclick="toggleMenu(this)">☰</button>
+        </div>
     </header>
 
     <section class="gallery">
-        <div class="gallery-content"></div>
+        <div class="gallery-content gallery-layout"></div>
     </section>
 
     <section class="editor hidden">

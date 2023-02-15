@@ -1,9 +1,6 @@
 'use strict'
 
-let gImgs = [
-    { id: 1, url: 'images/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'images/2.jpg', keywords: ['funny'] }
-]
+let gImgs = createImages()
 
 let gMeme = {
     selectedImgId: 2,
@@ -77,4 +74,28 @@ function setImg(id) {
 function getLineTxt() {
     const idx = gMeme.selectedLineIdx
     return gMeme.lines[idx].txt
+}
+
+function createImages() {
+    return [
+        { id: 1, url: 'images/1.jpg', keywords: ['funny', 'tramp'] },
+        { id: 2, url: 'images/2.jpg', keywords: ['cute' , 'dog'] },
+        { id: 3, url: 'images/3.jpg', keywords: ['cute', 'baby', 'dog'] },
+        { id: 4, url: 'images/4.jpg', keywords: ['cat', 'laptop'] },
+        { id: 5, url: 'images/5.jpg', keywords: ['victory', 'baby'] },
+        { id: 6, url: 'images/6.jpg', keywords: ['funny', 'explain'] },
+        { id: 7, url: 'images/7.jpg', keywords: ['baby', 'suprised'] },
+        { id: 8, url: 'images/8.jpg', keywords: ['funny', 'watching'] },
+        { id: 9, url: 'images/9.jpg', keywords: ['baby', 'laugh'] },
+        { id: 10, url: 'images/10.jpg', keywords: ['obama', 'laugh'] },
+        { id: 11, url: 'images/11.jpg', keywords: ['kiss', 'funny'] },
+        { id: 12, url: 'images/12.jpg', keywords: ['haim', 'point'] },
+        { id: 13, url: 'images/13.jpg', keywords: ['wallstreet', 'toast'] },
+        { id: 14, url: 'images/14.jpg', keywords: ['scary', 'sunglass'] },
+        { id: 15, url: 'images/15.jpg', keywords: ['exactly'] },
+        { id: 16, url: 'images/16.jpg', keywords: ['laugh', 'bold'] },
+        { id: 17, url: 'images/17.jpg', keywords: ['putin', 'piece'] },
+        { id: 18, url: 'images/18.jpg', keywords: ['toystory', 'buz'] },
+    ]
+
 }
