@@ -14,6 +14,21 @@
     width: 50px;
 }
 
+.editor .btn:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.editor .align {
+    height: 30px;
+    width: 30px;
+    margin-inline-end: 20px;
+}
+
+.editor .align:hover {
+    cursor: pointer;
+}
+
 .line-edit {
     margin-bottom: 30px;
 }

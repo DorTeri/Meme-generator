@@ -9,17 +9,25 @@ let gMeme = {
         {
             txt: 'I sometimes eat Falafel',
             size: 20,
-            align: 'left',
+            align: 'center',
             color: 'white'
-        } ,
-        {
-            txt: 'I sometimes eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'white'
-        }
+        } 
     ],
     font: 'Impact'
+}
+
+function addLine() {
+    gMeme.lines.push({
+        txt: 'Write here',
+        size: 20,
+        align: 'center',
+        color: 'white'
+    })
+}
+
+function removeLine() {
+    if(gMeme.lines.length === 1) return
+    gMeme.lines.splice(gMeme.lines.length - 1 , 1)
 }
 
 function changeColor(color) {
@@ -74,6 +82,10 @@ function setImg(id) {
 function getLineTxt() {
     const idx = gMeme.selectedLineIdx
     return gMeme.lines[idx].txt
+}
+
+function changeAlign(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align
 }
 
 function createImages() {

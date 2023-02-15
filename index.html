@@ -62,8 +62,12 @@
                 <input type="color" oninput="onChangeColor(this.value)">
                 <button class="btn btn-increase-size" onclick="onChangeSize(1)">A+</button>
                 <button class="btn btn-decrease-size" onclick="onChangeSize(-1)">A-</button>
+                <img class="align" src="images/left.png" onclick="onChangeAlign('right')" alt="left">
+                <img class="align" src="images/center.png" onclick="onChangeAlign('center')" alt="center">
+                <img class="align" src="images/right.png" onclick="onChangeAlign('left')" alt="right">
                 <label for="list-fonts">Choose font</label>
-                <input list="fonts-list" id="list-fonts" name="fonts" class="list-fonts" onchange="onSetFont(this.value)">
+                <input list="fonts-list" id="list-fonts" name="fonts" class="list-fonts"
+                    onchange="onSetFont(this.value)">
             </div>
             <!-- Emojies -->
             <!-- Shares -->

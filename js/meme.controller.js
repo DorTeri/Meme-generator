@@ -13,21 +13,21 @@ function renderMeme() {
     img.src = imgUrl
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        gMeme.lines.forEach((line, idx ) => 
-        drawText(line.txt, line.color, line.size , meme.font ,idx))
+        gMeme.lines.forEach((line, idx) =>
+            drawText(line.txt, line.color, line.size, meme.font, line.align, idx))
         changeTxtInput()
     }
 }
 
-function drawText(text, color, size, font, lineIdx) {
+function drawText(text, color, size, font, align, lineIdx) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = color
     gCtx.font = `${size}px ${font}`
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = align
     gCtx.textBaseline = 'middle'
 
-    const {x ,y} = setPlace(lineIdx)
+    const { x, y } = setPlace(lineIdx)
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
@@ -52,9 +52,24 @@ function onSetFont(font) {
     renderMeme()
 }
 
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function onRemoveLine() {
+    removeLine()
+    renderMeme()
+}
+
 function onChangeLine() {
     changeLine()
     changeTxtInput()
+}
+
+function onChangeAlign(align) {
+    changeAlign(align)
+    renderMeme()
 }
 
 function selectLine() {
@@ -63,5 +78,5 @@ function selectLine() {
 
 function changeTxtInput() {
     const txt = getLineTxt()
-    document.querySelector('input[name="txt"]').value = txt 
+    document.querySelector('input[name="txt"]').value = txt
 }
