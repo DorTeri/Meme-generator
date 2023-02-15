@@ -13,9 +13,22 @@ let gMeme = {
             txt: 'I sometimes eat Falafel',
             size: 20,
             align: 'left',
-            color: 'red'
+            color: 'white'
         }
-    ]
+    ],
+    font: 'Impact'
+}
+
+function changeColor(color) {
+    gMeme.lines[0].color = color
+}
+
+function changeSize(num) {
+    gMeme.lines[0].size += num
+}
+
+function setFont(font) {
+    gMeme.font = font
 }
 
 function getMeme() {

@@ -1,7 +1,13 @@
+@import 'helpers.css';
+@import 'screen.css';
 @import 'grid.css';
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    margin: 0;
 }
 
 .editor {
@@ -20,4 +26,20 @@
 .gallery-content img:hover {
     cursor: pointer;
     border: 3px solid red;
+}
+
+.hidden {
+    display: none;
+}
+
+.main-header {
+    background-color: rgb(15, 85, 90);
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+.main-header .main-menu a {
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
 }

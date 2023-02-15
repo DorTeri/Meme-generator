@@ -10,18 +10,50 @@
 </head>
 
 <body onload="onInit()">
+
+    <div class="main-screen" onclick="toggleMenu()">
+        <ul class="main-menu clean-list">
+            <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+
+    <header class="main-header flex space-between align-center">
+        <div class="logo">Meme generaDor</div>
+        <nav class="main-nav">
+            <ul class="main-menu flex clean-list">
+                <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <button type="button" onclick="toggleMenu()">☰</button>
+    </header>
+
     <section class="gallery">
         <div class="gallery-content"></div>
     </section>
 
-    <section class="editor">
+    <section class="editor hidden">
         <div class="canvas-container">
             <canvas id="edit-canvas" height="450" width="450"></canvas>
         </div>
         <div class="edit-meme">
             <input type="text" placeholder="Write here" oninput="onSetLineTxt(this.value)">
+            <input type="color" oninput="onChangeColor(this.value)">
+            <button class="btn-increase-size" onclick="onChangeSize(1)">+</button>
+            <button class="btn-decrease-size" onclick="onChangeSize(-1)">-</button>
+            <input list="fonts-list" name="fonts" class="list-fonts" onchange="onSetFont(this.value)">
         </div>
     </section>
+
+    <datalist id="fonts-list">
+        <option value="Impact"></option>
+        <option value="Arial"></option>
+        <option value="Verdana"></option>
+        <option value="Tahoma"></option>
+        <option value="Georgia"></option>
+        <option value="Courier"></option>
+    </datalist>
 
 
     <script src="js/service/util.js"></script>
