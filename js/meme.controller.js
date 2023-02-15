@@ -7,17 +7,19 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function renderMeme() {
     const meme = getMeme()
-    const lines = meme.lines
+    // const lineIdx = meme.selectedLineIdx
     const imgUrl = findUrlById(meme.selectedImgId).url
     const img = new Image()
     img.src = imgUrl
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText(lines[0].txt, lines[0].color, lines[0].size , meme.font ,200, 50)
+        gMeme.lines.forEach((line, idx ) => 
+        drawText(line.txt, line.color, line.size , meme.font ,idx))
+        changeTxtInput()
     }
 }
 
-function drawText(text, color = white, size, font , x, y) {
+function drawText(text, color, size, font, lineIdx) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = color
@@ -25,6 +27,7 @@ function drawText(text, color = white, size, font , x, y) {
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
+    const {x ,y} = setPlace(lineIdx)
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
@@ -47,4 +50,18 @@ function onChangeSize(num) {
 function onSetFont(font) {
     setFont(font)
     renderMeme()
+}
+
+function onChangeLine() {
+    changeLine()
+    changeTxtInput()
+}
+
+function selectLine() {
+    document.querySelector
+}
+
+function changeTxtInput() {
+    const txt = getLineTxt()
+    document.querySelector('input[name="txt"]').value = txt 
 }
