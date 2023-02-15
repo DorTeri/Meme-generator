@@ -17,10 +17,12 @@
     <div class="screen-content">
         <ul class="screen-items clean-list">
             <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-            <li><a href="#">Memes</a></li>
+            <li><a href="#" onclick="onShowMemes()">Memes</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </div>
+
+    <div class="memes-container hidden"></div>
 
     <header class="main-header main-layout full">
         <div class="nav flex align-center">
@@ -28,7 +30,7 @@
             <nav class="main-nav">
                 <ul class="main-menu flex clean-list">
                     <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-                    <li><a href="#">Memes</a></li>
+                    <li><a href="#" onclick="onShowMemes()">Memes</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
@@ -40,9 +42,14 @@
             </div>
         </div>
     </header>
-
-    <section class="gallery">
-        <div class="gallery-content gallery-layout"></div>
+    <section class="gallery-container">
+        <div class="search-container">
+            <input type="text" placeholder="Search" oninput="onSearch(this.value)">
+            <button class="btn-generate" onclick="onRandomMeme()">Generate</button>
+        </div>
+        <section class="gallery">
+            <div class="gallery-content gallery-layout"></div>
+        </section>
     </section>
 
     <section class="editor hidden">
@@ -71,6 +78,11 @@
             </div>
             <!-- Emojies -->
             <!-- Shares -->
+            <div class="shares">
+                <button class="btn-save" onclick="onSaveImage()">Save</button>
+                <button class="btn-download">Download</button>
+                <button class="btn-share">Share</button>
+            </div>
         </div>
     </section>
 
@@ -85,6 +97,7 @@
 
 
     <script src="js/service/util.js"></script>
+    <script src="js/service/storage.js"></script>
     <script src="js/service/service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>

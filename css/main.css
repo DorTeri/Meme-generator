@@ -5,6 +5,7 @@
 @import 'screen.css';
 @import 'grid.css';
 @import 'editor.css';
+@import 'memes.css';
 @import 'btn-toggle.css';
 
 * {
@@ -30,9 +31,13 @@ body {
 
 .gallery-content img:hover {
     cursor: pointer;
-    border: 3px solid red;
+    outline: 3px solid red;
 }
 
 .hidden {
     display: none;
+}
+
+.search-container {
+    margin-bottom: 50px;
 }

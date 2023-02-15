@@ -10,7 +10,8 @@ let gMeme = {
             txt: 'I sometimes eat Falafel',
             size: 20,
             align: 'center',
-            color: 'white'
+            txtColor: 'white',
+            strokeColor: 'black'
         } 
     ],
     font: 'Impact'
@@ -22,6 +23,20 @@ function addLine() {
         size: 20,
         align: 'center',
         color: 'white'
+    })
+}
+
+function search(name) {
+    return gImgs.filter(img => img.keywords.some(key => key.includes(name)))
+}
+
+function randomMeme() {
+    gMeme.selectedImgId = getRandomIntInclusive(1 , gImgs.length - 1)
+    if(Math.random() > 0.5) addLine()
+    gMeme.lines.forEach(line => {
+        line.txt = makeLorem(4)
+        line.size = getRandomIntInclusive(15 , 27)
+        line.color = getRandomColor()
     })
 }
 
@@ -71,7 +86,7 @@ function getImages() {
     return gImgs
 }
 
-function findUrlById(id) {
+function findImgById(id) {
     return gImgs.find(img => img.id === id)
 }
 

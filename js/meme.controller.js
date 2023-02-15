@@ -7,22 +7,21 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function renderMeme() {
     const meme = getMeme()
-    // const lineIdx = meme.selectedLineIdx
-    const imgUrl = findUrlById(meme.selectedImgId).url
+    const imgUrl = findImgById(meme.selectedImgId).url
     const img = new Image()
     img.src = imgUrl
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         gMeme.lines.forEach((line, idx) =>
-            drawText(line.txt, line.color, line.size, meme.font, line.align, idx))
+            drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx))
         changeTxtInput()
     }
 }
 
-function drawText(text, color, size, font, align, lineIdx) {
+function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = color
+    gCtx.strokeStyle = strokeClr
+    gCtx.fillStyle = txtColor
     gCtx.font = `${size}px ${font}`
     gCtx.textAlign = align
     gCtx.textBaseline = 'middle'
