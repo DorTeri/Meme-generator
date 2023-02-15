@@ -11,3 +11,13 @@
 #edit-canvas {
     background-color: antiquewhite;
 }
+
+.gallery-content img {
+    width: 200px;
+    height: 200px;
+}
+
+.gallery-content img:hover {
+    cursor: pointer;
+    border: 3px solid red;
+}
