@@ -1,0 +1,13 @@
+@import 'grid.css';
+
+* {
+    box-sizing: border-box;
+}
+
+.editor {
+    width: 90vw;
+}
+
+#edit-canvas {
+    background-color: antiquewhite;
+}

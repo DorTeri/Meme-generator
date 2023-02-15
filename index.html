@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,22 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Meme generator</title>
 </head>
-<body>
+
+<body onload="onInit()">
     <section class="gallery"></section>
-    <section class="editor"></section>
+    <section class="editor">
+        <div class="canvas-container">
+            <canvas id="edit-canvas" height="450" width="450"></canvas>
+        </div>
+        <div class="edit-meme">
+            <input type="text" placeholder="Write here" oninput="onSetLineTxt(this.value)">
+        </div>
+    </section>
 
 
     <script src="js/service/util.js"></script>
     <script src="js/service/service.js"></script>
     <script src="js/controller.js"></script>
 </body>
+
 </html>
