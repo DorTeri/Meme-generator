@@ -26,6 +26,7 @@
 }
 
 .screen-items a:hover {
+    color: red;
     background-color: rgb(0 0 0 / 100%);
 }
 

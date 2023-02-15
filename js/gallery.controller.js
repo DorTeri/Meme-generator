@@ -1,9 +1,13 @@
 'use strict'
 
 let showMenu = false;
+let gClickedWord
 
 function onInit() {
     renderGallery()
+    renderEmojies()
+    const keyWords = loadFromStorage('KeyWords')
+    renderKeyWords()
 }
 
 function renderGallery(images = getImages()) {
@@ -66,8 +70,12 @@ function onRandomMeme() {
 }
 
 function onSearch(name) {
+    if(gClickedWord === name) return
+    gClickedWord = name
     const images = search(name)
     if(!images || images.length === 0) return
+    changeWordSize(name)
+    renderKeyWords()
     renderGallery(images)
 }
 
@@ -83,4 +91,15 @@ function toggleMenu() {
         document.querySelector('.screen-content').classList.remove('open-content')
     }
     showMenu = !showMenu
+}
+
+function renderKeyWords() {
+    let words = loadFromStorage('KeyWords')
+    if(!words) words = createKeyWords()
+    const elWordsContainer = document.querySelector('.words-container')
+    let strHTML = ''
+    words.forEach(word => {
+        strHTML += `<p onclick="onSearch('${word.word}')" class="key-word" style="font-size: ${word.count}px">${word.word}</p>`
+    })
+    elWordsContainer.innerHTML = strHTML
 }

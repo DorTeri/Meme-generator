@@ -20,6 +20,10 @@ body {
     width: 90vw;
 }
 
+.canvas-container {
+    width: 100%;
+}
+
 #edit-canvas {
     background-color: antiquewhite;
 }
@@ -39,4 +43,21 @@ body {
 
 .search-container {
     margin-bottom: 50px;
+}
+
+.words-container {
+    margin-inline-start: 50px;
+    display: inline-block;
+}
+
+.words-container p {
+    font-weight: bold;
+    color: red;
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.words-container p:hover {
+    cursor: pointer;
+    color: black;
 }

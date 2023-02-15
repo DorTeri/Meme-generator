@@ -18,6 +18,16 @@ function renderMeme() {
     }
 }
 
+function renderEmojies() {
+    const emojies = getEmojies()
+    const elEmojies = document.querySelector('.emojies')
+    let strHTML = ''
+    emojies.forEach(emoji => {
+        strHTML += `<button onclick="onAddEmoji('${emoji}')" class="emoji">${emoji}</button>`
+    })
+    elEmojies.innerHTML = strHTML
+}
+
 function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeClr
@@ -36,6 +46,10 @@ function onSetLineTxt(txt) {
     renderMeme()
 }
 
+function onChangePage(num) {
+    changePage(num)
+    renderEmojies()
+}
 
 function onChangeColor(color) {
     changeColor(color)
@@ -85,3 +99,9 @@ function changeTxtInput() {
     const txt = getLineTxt()
     document.querySelector('input[name="txt"]').value = txt
 }
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+  }

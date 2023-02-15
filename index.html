@@ -43,6 +43,7 @@
         <div class="search-container">
             <input type="text" placeholder="Search" oninput="onSearch(this.value)">
             <button class="btn-generate" onclick="onRandomMeme()">Generate</button>
+            <div class="words-container"></div>
         </div>
         <section class="gallery">
             <div class="gallery-content gallery-layout"></div>
@@ -74,16 +75,19 @@
                     onchange="onSetFont(this.value)">
             </div>
             <!-- Emojies -->
-            <div class="emojies">
-                <button onclick="onAddEmoji('😂')" class="emoji">😂</button>
-                <button onclick="onAddEmoji('😁')" class="emoji">😁</button>
-                <button onclick="onAddEmoji('😃')" class="emoji">😃</button>
+            <div class="emojies-list">
+                <button onclick="onChangePage(-1)" class="btn-page prev"><i class="fa-solid fa-arrow-left"></i></button>
+                <div class="emojies"></div>
+                <button onclick="onChangePage(1)" class="btn-page next"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
             <!-- Shares -->
             <div class="shares">
                 <button class="btn-save" onclick="onSaveImage()">Save</button>
-                <button class="btn-download">Download</button>
+                <button class="btn-download"><a href="#" onclick="downloadImg(this)"
+                        download="my-img.jpg"></a>Download</button>
                 <button onclick="onUploadImg()" class="btn-share">Share</button>
+                <input class="btn-upload" type="file" class="file-input btn" name="image"
+                    onchange="onImgInput(event)" />
             </div>
         </div>
     </section>

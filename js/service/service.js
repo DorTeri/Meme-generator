@@ -1,6 +1,10 @@
 'use strict'
+const PAGE_SIZE = 3
+const gEmojies = createEmojies()
 
 let gImgs = createImages()
+let gPageIdx = 0
+let gSearchKeyWords
 
 let gMeme = {
     selectedImgId: 2,
@@ -17,6 +21,18 @@ let gMeme = {
     font: 'Impact'
 }
 
+function createKeyWords() {
+    const words =  [
+        { word: 'funny', count: 23 },
+        { word: 'baby', count: 25 },
+        { word: 'cute', count: 12 },
+        { word: 'dog', count: 31 },
+        { word: 'laugh', count: 26 }
+    ]
+    saveToStorage('KeyWords', words)
+    return words
+}
+
 function addLine() {
     gMeme.lines.push({
         txt: 'Write here',
@@ -24,6 +40,10 @@ function addLine() {
         align: 'center',
         color: 'white'
     })
+}
+
+function getGWords() {
+    return gSearchKeyWords
 }
 
 function addEmoji(val) {
@@ -42,6 +62,25 @@ function randomMeme() {
         line.size = getRandomIntInclusive(15, 27)
         line.color = getRandomColor()
     })
+}
+
+function changePage(num) {
+    gPageIdx += num
+    if (gPageIdx * PAGE_SIZE + PAGE_SIZE > gEmojies.length) {
+        disableButton('next')
+    } else if (!gPageIdx) disableButton('prev')
+    else disableButton('none')
+}
+
+function getKeyWords() {
+    return gSearchKeyWords
+}
+
+function changeWordSize(word) {
+    const words = loadFromStorage('KeyWords')
+    const keyIdx = words.findIndex(key => key.word === word)
+    words[keyIdx].count++
+    saveToStorage('KeyWords' , words)
 }
 
 function removeLine() {
@@ -114,6 +153,33 @@ function changeAlign(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align
 }
 
+function disableButton(btn) {
+    var prevBtn = document.querySelector('.prev')
+    var nextBtn = document.querySelector('.next')
+    if (btn === 'next') {
+        nextBtn.disabled = true
+        prevBtn.disabled = false
+    } else if (btn === 'prev') {
+        prevBtn.disabled = true
+        nextBtn.disabled = false
+    }
+    else {
+        nextBtn.disabled = false
+        prevBtn.disabled = false
+    }
+}
+
+function createEmojies() {
+    return ['&#128512', '&#128513', '&#128514', '&#128515',
+        '&#128516', '&#128517', '&#128518', '	&#128519', '&#128520', '&#128521',
+        '&#128522', '&#128523', '	&#128524', '&#128525', '&#128526', '&#128527', '&#128528']
+}
+
+function getEmojies() {
+    const startIdx = gPageIdx * PAGE_SIZE
+    return gEmojies.slice(startIdx, startIdx + 3)
+}
+
 function createImages() {
     return [
         { id: 1, url: 'images/1.jpg', keywords: ['funny', 'tramp'] },
@@ -135,5 +201,4 @@ function createImages() {
         { id: 17, url: 'images/17.jpg', keywords: ['putin', 'piece'] },
         { id: 18, url: 'images/18.jpg', keywords: ['toystory', 'buz'] },
     ]
-
 }
