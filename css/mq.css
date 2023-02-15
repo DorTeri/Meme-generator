@@ -2,7 +2,8 @@
     .main-nav {
         display: none;
     }
-    .gallery-layout {
+    .gallery-layout ,
+    .di {
         display: grid;
         grid-template-columns: repeat(2 , minmax(auto , 1fr) );
         gap: 20px;
