@@ -15,17 +15,23 @@ function renderGallery(images = getImages()) {
     elGallery.innerHTML = strHTML
 }
 
-function onShowMemes() {
-    document.querySelector('.gallery').classList.add('hidden')
-    document.querySelector('.memes-container').classList.remove('hidden')
+function onRenderMemes() {
+    hideEditor()
     const memes = loadFromStorage(STORAGE_KEY)
-    const elMemes = document.querySelector('.memes-container')
+    const elGallery = document.querySelector('.gallery-content')
     let strHTML = ''
-    memes.forEach(meme => {
+    memes.forEach((meme , i) => {
         const img = findImgById(meme.selectedImgId)
-        strHTML += `<img src=${img.url} onclick="onImgSelect(${img.url})">`
+        strHTML += `<img src=${img.url} onclick="onMemeSelect(${img.id} , ${i})">`
     })
-    elMemes.innerHTML = strHTML
+    elGallery.innerHTML = strHTML
+}
+
+function onMemeSelect(id , idx) {
+    setImg(id)
+    setMeme(idx)
+    renderMeme()
+    openEditor()
 }
 
 function onImgSelect(id) {
@@ -36,6 +42,7 @@ function onImgSelect(id) {
 
 function onOpenGallery() {
     hideEditor()
+    renderGallery()
 }
 
 function openEditor() {

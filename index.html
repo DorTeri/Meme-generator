@@ -17,12 +17,10 @@
     <div class="screen-content">
         <ul class="screen-items clean-list">
             <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-            <li><a href="#" onclick="onShowMemes()">Memes</a></li>
+            <li><a href="#" onclick="onRenderMemes()">Memes</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </div>
-
-    <div class="memes-container hidden"></div>
 
     <header class="main-header main-layout full">
         <div class="nav flex align-center">
@@ -30,11 +28,10 @@
             <nav class="main-nav">
                 <ul class="main-menu flex clean-list">
                     <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-                    <li><a href="#" onclick="onShowMemes()">Memes</a></li>
+                    <li><a href="#" onclick="onRenderMemes()">Memes</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
-            <!-- <button class="btn-toggle" type="button" onclick="toggleMenu(this)">☰</button> -->
             <div class="menu-btn" onclick="toggleMenu()">
                 <div class="btn-line"></div>
                 <div class="btn-line"></div>
@@ -77,11 +74,16 @@
                     onchange="onSetFont(this.value)">
             </div>
             <!-- Emojies -->
+            <div class="emojies">
+                <button onclick="onAddEmoji('😂')" class="emoji">😂</button>
+                <button onclick="onAddEmoji('😁')" class="emoji">😁</button>
+                <button onclick="onAddEmoji('😃')" class="emoji">😃</button>
+            </div>
             <!-- Shares -->
             <div class="shares">
                 <button class="btn-save" onclick="onSaveImage()">Save</button>
                 <button class="btn-download">Download</button>
-                <button class="btn-share">Share</button>
+                <button onclick="onUploadImg()" class="btn-share">Share</button>
             </div>
         </div>
     </section>
@@ -95,9 +97,12 @@
         <option value="Courier"></option>
     </datalist>
 
+    <datalist id="gallery-search"></datalist>
+
 
     <script src="js/service/util.js"></script>
     <script src="js/service/storage.js"></script>
+    <script src="js/service/sharing.js"></script>
     <script src="js/service/service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>

@@ -12,7 +12,7 @@ let gMeme = {
             align: 'center',
             txtColor: 'white',
             strokeColor: 'black'
-        } 
+        }
     ],
     font: 'Impact'
 }
@@ -26,23 +26,27 @@ function addLine() {
     })
 }
 
+function addEmoji(val) {
+    gMeme.lines[gMeme.selectedLineIdx].txt += val
+}
+
 function search(name) {
     return gImgs.filter(img => img.keywords.some(key => key.includes(name)))
 }
 
 function randomMeme() {
-    gMeme.selectedImgId = getRandomIntInclusive(1 , gImgs.length - 1)
-    if(Math.random() > 0.5) addLine()
+    gMeme.selectedImgId = getRandomIntInclusive(1, gImgs.length - 1)
+    if (Math.random() > 0.5) addLine()
     gMeme.lines.forEach(line => {
         line.txt = makeLorem(4)
-        line.size = getRandomIntInclusive(15 , 27)
+        line.size = getRandomIntInclusive(15, 27)
         line.color = getRandomColor()
     })
 }
 
 function removeLine() {
-    if(gMeme.lines.length === 1) return
-    gMeme.lines.splice(gMeme.lines.length - 1 , 1)
+    if (gMeme.lines.length === 1) return
+    gMeme.lines.splice(gMeme.lines.length - 1, 1)
 }
 
 function changeColor(color) {
@@ -62,19 +66,19 @@ function setLineTxt(txt) {
 }
 
 function changeLine() {
-    if(gMeme.lines.length === 1) return
-    if(gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
-    else if(gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
+    if (gMeme.lines.length === 1) return
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
+    else if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
 }
 
 function setPlace(lineIdx) {
     switch (lineIdx) {
-        case 0: 
-        return {x: 200 , y:50}
-        case 1: 
-        return {x: 200 , y:350}
+        case 0:
+            return { x: 200, y: 50 }
+        case 1:
+            return { x: 200, y: 350 }
         default:
-        return {x: 200 , y:200}
+            return { x: 200, y: 200 }
     }
 }
 
@@ -88,6 +92,13 @@ function getImages() {
 
 function findImgById(id) {
     return gImgs.find(img => img.id === id)
+}
+
+function setMeme(idx) {
+    const memes = loadFromStorage(STORAGE_KEY)
+    const meme = memes[idx]
+    gMeme.lines = meme.lines
+    gMeme.font = meme.lines
 }
 
 function setImg(id) {
@@ -106,7 +117,7 @@ function changeAlign(align) {
 function createImages() {
     return [
         { id: 1, url: 'images/1.jpg', keywords: ['funny', 'tramp'] },
-        { id: 2, url: 'images/2.jpg', keywords: ['cute' , 'dog'] },
+        { id: 2, url: 'images/2.jpg', keywords: ['cute', 'dog'] },
         { id: 3, url: 'images/3.jpg', keywords: ['cute', 'baby', 'dog'] },
         { id: 4, url: 'images/4.jpg', keywords: ['cat', 'laptop'] },
         { id: 5, url: 'images/5.jpg', keywords: ['victory', 'baby'] },

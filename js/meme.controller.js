@@ -36,8 +36,14 @@ function onSetLineTxt(txt) {
     renderMeme()
 }
 
+
 function onChangeColor(color) {
     changeColor(color)
+    renderMeme()
+}
+
+function onAddEmoji(val) {
+    addEmoji(val)
     renderMeme()
 }
 

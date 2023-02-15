@@ -1,4 +1,5 @@
 .editor {
+    position: relative;
     grid-column: 2;
 }
 
@@ -31,4 +32,23 @@
 
 .line-edit {
     margin-bottom: 30px;
+}
+
+.shares {
+    position: absolute;
+    bottom: 0;
+}
+
+.shares > * {
+    background-color: inherit;
+    border-radius: 15px;
+    padding: 5px;
+    margin-inline-end: 20px;
+    border: 2px solid black;
+    transition: .3s;
+}
+
+.shares > *:hover {
+    cursor: pointer;
+    background-color: red;
 }
