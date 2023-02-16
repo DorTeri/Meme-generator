@@ -2,6 +2,8 @@
 const PAGE_SIZE = 3
 const gEmojies = createEmojies()
 
+let gLineDragging = false
+let gLineDragIdx
 let gImgs = createImages()
 let gPageIdx = 0
 let gSearchKeyWords
@@ -15,14 +17,17 @@ let gMeme = {
             size: 20,
             align: 'center',
             txtColor: 'white',
-            strokeColor: 'black'
+            strokeColor: 'black',
+            x: 200,
+            y: 50,
+            isDrag: false
         }
     ],
     font: 'Impact'
 }
 
 function createKeyWords() {
-    const words =  [
+    const words = [
         { word: 'funny', count: 23 },
         { word: 'baby', count: 25 },
         { word: 'cute', count: 12 },
@@ -38,8 +43,11 @@ function addLine() {
         txt: 'Write here',
         size: 20,
         align: 'center',
-        color: 'white'
+        color: 'white',
+        x: 1,
+        y: 1,
     })
+    return gMeme.lines.length - 1
 }
 
 function getGWords() {
@@ -64,6 +72,32 @@ function randomMeme() {
     })
 }
 
+function setPos(x, y, width, lineIdx, size) {
+    gMeme.lines[lineIdx].posLeft = x - width / 2
+    gMeme.lines[lineIdx].posRight = x + width / 2
+    gMeme.lines[lineIdx].posBottom = y + size * 1.2 / 2
+    gMeme.lines[lineIdx].posTop = y - size * 1.2 / 2
+}
+
+function isLineClicked(clickedPos) {
+    const lineIdx = gMeme.lines.findIndex(line => {
+        if(clickedPos.x > line.posLeft && clickedPos.x < line.posRight &&
+            clickedPos.y > line.posTop && clickedPos.y < line.posBottom) return true
+    })
+    gLineDragIdx = lineIdx
+    return lineIdx
+}
+
+function setLineDrag(boolean) {
+    gMeme.lines[gLineDragIdx].isDrag = boolean
+}
+
+function moveLine(dx, dy) {
+    gMeme.lines[gLineDragIdx].x += dx
+    gMeme.lines[gLineDragIdx].y += dy
+}
+
+
 function changePage(num) {
     gPageIdx += num
     if (gPageIdx * PAGE_SIZE + PAGE_SIZE > gEmojies.length) {
@@ -80,12 +114,12 @@ function changeWordSize(word) {
     const words = loadFromStorage('KeyWords')
     const keyIdx = words.findIndex(key => key.word === word)
     words[keyIdx].count++
-    saveToStorage('KeyWords' , words)
+    saveToStorage('KeyWords', words)
 }
 
 function removeLine() {
-    if (gMeme.lines.length === 1) return
-    gMeme.lines.splice(gMeme.lines.length - 1, 1)
+    console.log('line', gMeme.selectedLineIdx)
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
 function changeColor(color) {
@@ -113,11 +147,17 @@ function changeLine() {
 function setPlace(lineIdx) {
     switch (lineIdx) {
         case 0:
-            return { x: 200, y: 50 }
+            gMeme.lines[lineIdx].x = gElCanvas.width / 2
+            gMeme.lines[lineIdx].y = 50
+            break
         case 1:
-            return { x: 200, y: 350 }
+            gMeme.lines[lineIdx].x = gElCanvas.width / 2
+            gMeme.lines[lineIdx].y = gElCanvas.height - 50
+            break
         default:
-            return { x: 200, y: 200 }
+            gMeme.lines[lineIdx].x = gElCanvas.width / 2
+            gMeme.lines[lineIdx].y = gElCanvas.height / 2
+            break
     }
 }
 

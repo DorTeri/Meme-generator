@@ -2,11 +2,12 @@
 
 let showMenu = false;
 let gClickedWord
+let gStartPos
 
 function onInit() {
+    addListeners()
     renderGallery()
     renderEmojies()
-    const keyWords = loadFromStorage('KeyWords')
     renderKeyWords()
 }
 
@@ -24,14 +25,19 @@ function onRenderMemes() {
     const memes = loadFromStorage(STORAGE_KEY)
     const elGallery = document.querySelector('.gallery-content')
     let strHTML = ''
-    memes.forEach((meme , i) => {
+    memes.forEach((meme, i) => {
         const img = findImgById(meme.selectedImgId)
         strHTML += `<img src=${img.url} onclick="onMemeSelect(${img.id} , ${i})">`
     })
     elGallery.innerHTML = strHTML
 }
 
-function onMemeSelect(id , idx) {
+function addListeners() {
+    addTouchListeners()
+    addMouseListeners()
+}
+
+function onMemeSelect(id, idx) {
     setImg(id)
     setMeme(idx)
     renderMeme()
@@ -70,10 +76,10 @@ function onRandomMeme() {
 }
 
 function onSearch(name) {
-    if(gClickedWord === name) return
+    if (gClickedWord === name) return
     gClickedWord = name
     const images = search(name)
-    if(!images || images.length === 0) return
+    if (!images || images.length === 0) return
     changeWordSize(name)
     renderKeyWords()
     renderGallery(images)
@@ -81,7 +87,7 @@ function onSearch(name) {
 
 function toggleMenu() {
     const btn = document.querySelector('.menu-btn')
-    if(!showMenu) {
+    if (!showMenu) {
         btn.classList.add("close");
         document.body.classList.add('menu-open')
         document.querySelector('.screen-content').classList.add('open-content')
@@ -95,11 +101,42 @@ function toggleMenu() {
 
 function renderKeyWords() {
     let words = loadFromStorage('KeyWords')
-    if(!words) words = createKeyWords()
+    if (!words) words = createKeyWords()
     const elWordsContainer = document.querySelector('.words-container')
     let strHTML = ''
     words.forEach(word => {
         strHTML += `<p onclick="onSearch('${word.word}')" class="key-word" style="font-size: ${word.count}px">${word.word}</p>`
     })
     elWordsContainer.innerHTML = strHTML
+}
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    const lineIdx = isLineClicked(pos)
+    if (lineIdx < 0 || gLineDragIdx === undefined) return
+    gMeme.selectedLineIdx = lineIdx
+    setLineDrag(true)
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+    renderMeme()
+    document.querySelector('.line-edit input[name="txt"]').focus()
+}
+
+function onMove(ev) {
+    if (gLineDragIdx < 0 || gLineDragIdx === undefined) return
+    const isDrag = gMeme.lines[gLineDragIdx].isDrag
+    if (!isDrag) return
+
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    gStartPos = pos
+    renderMeme()
+}
+
+function onUp() {
+    if (gLineDragIdx === undefined || gLineDragIdx < 0) return
+    setLineDrag(false)
+    document.body.style.cursor = 'default'
 }

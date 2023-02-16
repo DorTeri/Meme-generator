@@ -36,9 +36,11 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
     gCtx.textAlign = align
     gCtx.textBaseline = 'middle'
 
-    const { x, y } = setPlace(lineIdx)
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    const x = gMeme.lines[lineIdx].x
+    const y = gMeme.lines[lineIdx].y
+    setPos(x, y, gCtx.measureText(text).width, lineIdx,size)
+    gCtx.fillText(text, x, y, gElCanvas.width)
+    gCtx.strokeText(text, x, y, gElCanvas.width)
 }
 
 function onSetLineTxt(txt) {
@@ -72,7 +74,8 @@ function onSetFont(font) {
 }
 
 function onAddLine() {
-    addLine()
+    const lineIdx = addLine()
+    setPlace(lineIdx)
     renderMeme()
 }
 
@@ -104,4 +107,4 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
-  }
+}
