@@ -85,6 +85,11 @@ function onSearch(name) {
     renderGallery(images)
 }
 
+function onSearchByName(name) {
+    const images = search(name)
+    renderGallery(images)
+}
+
 function toggleMenu() {
     const btn = document.querySelector('.menu-btn')
     if (!showMenu) {

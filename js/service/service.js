@@ -32,7 +32,7 @@ function createKeyWords() {
         { word: 'baby', count: 25 },
         { word: 'cute', count: 12 },
         { word: 'dog', count: 31 },
-        { word: 'laugh', count: 26 }
+        { word: 'laugh', count: 15 }
     ]
     saveToStorage('KeyWords', words)
     return words
