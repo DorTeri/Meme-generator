@@ -152,10 +152,11 @@ function onClick(ev) {
 }
 
 function flashMsg(msg) {
-    document.querySelector('.flash-msg h3').innerText = msg
+    console.log('msg', msg)
+    document.querySelector('.flash-msg').innerHTML = msg
     const elFlash = document.querySelector('.flash-msg')
     elFlash.classList.add('open-msg')
     setTimeout(() => {
-        elFlash.classList.remove('flash')
+        elFlash.classList.remove('open-msg')
     }, 1500);
 }

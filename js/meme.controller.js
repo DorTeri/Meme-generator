@@ -116,7 +116,7 @@ function onSaveImage() {
     let images = loadFromStorage(STORAGE_KEY)
     !images ? images = [meme] : images.push(meme)
     saveToStorage(STORAGE_KEY, images)
-    flashMsg('Image saved')
+    flashMsg(`<h2>saved</h2><i class="fa-regular fa-floppy-disk"></i>`)
 }
 
 function onOpenColor() {

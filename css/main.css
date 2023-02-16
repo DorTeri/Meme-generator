@@ -76,17 +76,24 @@ body {
 }
 
 .flash-msg {
+    opacity: 0;
+    border-radius: 15px;
     position: absolute;
-    bottom: 10%;
-    right: -100%;
+    text-align: center;
+    bottom: 0;
+    right: 0;
     width: 20vw;
-    height: 10vh;
+    height: 13vh;
     transition: .4s;
-    background-color: black;
-    color: white;
+    background-color: rgb(0, 0, 0);
+    color: rgb(252, 240, 240);
+    transition: .8s;
+}
+
+.flash-msg > * {
+    margin: 0;
 }
 
 .open-msg {
-    transition: .8s;
-    right: 0;
+    opacity: 1;
 }
