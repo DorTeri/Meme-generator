@@ -177,7 +177,7 @@ function setMeme(idx) {
     const memes = loadFromStorage(STORAGE_KEY)
     const meme = memes[idx]
     gMeme.lines = meme.lines
-    gMeme.font = meme.lines
+    gMeme.font = meme.font
 }
 
 function setImg(id) {

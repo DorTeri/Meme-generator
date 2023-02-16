@@ -1,5 +1,6 @@
 'use strict'
 
+const STORAGE_KEY = 'memes'
 const gElCanvas = document.querySelector('#edit-canvas')
 const gCtx = gElCanvas.getContext('2d')
 
@@ -101,6 +102,13 @@ function selectLine() {
 function changeTxtInput() {
     const txt = getLineTxt()
     document.querySelector('input[name="txt"]').value = txt
+}
+
+function onSaveImage() {
+    const img = getMeme()
+    let images = loadFromStorage(STORAGE_KEY)
+    !images ? images = [img] : images.push(img)
+    saveToStorage(STORAGE_KEY, images)
 }
 
 function resizeCanvas() {
