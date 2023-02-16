@@ -21,13 +21,6 @@
     justify-self: start;
 }
 
-.btn-page {
-    transition: .5s;
-    font-size: 30px;
-    background-color: inherit;
-    border: none;
-}
-
 .btn-page:hover {
     color: red;
     cursor: pointer;
@@ -37,20 +30,13 @@
     display: block;
 }
 
-.emojies>* {
-    background-color: inherit;
-    border: none;
-    font-size: 60px;
-    transition: .4s;
-}
-
 .emojies>*:hover {
     cursor: pointer;
     rotate: 30deg;
 }
 
 .line-edit {
-    margin-bottom: 30px;
+    margin-bottom: 0.53em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -63,14 +49,6 @@
     grid-column: 1/-1;
 }
 
-.line-edit>*:not(input) {
-    background-color: inherit;
-    border-radius: 10px;
-    margin-inline-end: 20px;
-    font-size: 2rem;
-    width: 50%;
-}
-
 .line-edit>*:not(input):hover {
     border: 2px solid red;
 }
@@ -80,13 +58,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
-}
-
-.txt-edit>*:not(input) {
-    background-color: inherit;
-    border-radius: 10px;
-    font-size: 2rem;
-    width: 70%;
 }
 
 .txt-edit .list-fonts {
@@ -110,7 +81,7 @@
 
 .shares>*:not(.btn-upload) {
     background-color: inherit;
-    border-radius: 15px;
+    border-radius: 1em;
     padding: 5px;
     margin-inline-end: 10px;
     border: 2px solid black;

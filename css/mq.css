@@ -1,33 +1,134 @@
 @media (max-width: 650px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns: 30px minmax(auto , 1fr) 30px;
+    }
+
     .main-nav {
         display: none;
     }
+
     .gallery-layout {
         display: grid;
-        grid-template-columns: repeat(2 , minmax(auto , 1fr) );
+        grid-template-columns: repeat(2, minmax(auto, 1fr));
         gap: 20px;
+    }
+    .editor {
+        display: block;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .emojies>* {
+        background-color: inherit;
+        border: none;
+        font-size: 2em;
+        transition: .4s;
+    }
+
+    .line-edit>*:not(input) {
+        background-color: inherit;
+        border-radius: 10px;
+        margin-inline-end: 15px;
+        font-size: 2em;
+        width: 50%;
+    }
+    .txt-edit>*:not(input) {
+        background-color: inherit;
+        border-radius: 10px;
+        font-size: 2em;
+        width: 50%;
+    }
+    .btn-page {
+        transition: .5s;
+        font-size: 1em;
+        background-color: inherit;
+        border: none;
     }
 }
 
 @media (min-width: 650px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns: minmax(20px , 1fr) minmax(auto , 1000px) minmax(20px , 1fr);
+    }
+
     .menu-btn {
         display: none;
     }
+
     .main-nav {
         display: block;
     }
+
     .gallery-layout {
         display: grid;
-        grid-template-columns: repeat(3 , minmax(auto , 1fr) );
+        grid-template-columns: repeat(3, minmax(auto, 1fr));
         gap: 20px;
+    }
+
+    .editor {
+        display: grid;
+        width: 50%;
+        gap: 20px;
+    }
+
+    .emojies>* {
+        background-color: inherit;
+        border: none;
+        font-size: 3em;
+        transition: .4s;
+    }
+
+    .line-edit>*:not(input) {
+        background-color: inherit;
+        border-radius: 10px;
+        margin-inline-end: 20px;
+        font-size: 2rem;
+        width: 50%;
+    }
+
+    .txt-edit>*:not(input) {
+        background-color: inherit;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        width: 70%;
+    }
+    .canvas-container {
+        height: 28em;
+        width: 100%;
+    }
+    .btn-page {
+        transition: .5s;
+        font-size: 1.2em;
+        background-color: inherit;
+        border: none;
     }
 }
 
-@media (min-width: 930px) {
+@media (min-width: 950px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns: 30px 1fr 30px;
+    }
+    body {
+        justify-content: center;
+    }
+
     .gallery-layout {
         display: grid;
-        grid-template-columns: repeat(4 , minmax(auto , 1fr) );
+        grid-template-columns: repeat(4, minmax(auto, 1fr));
         gap: 20px;
+    }
+    .editor {
+        display: block;
+        gap: 10px;
+    }
+    .btn-page {
+        transition: .5s;
+        font-size: 2em;
+        background-color: inherit;
+        border: none;
     }
     .editor {
         display: grid;
@@ -37,10 +138,18 @@
 }
 
 @media (min-width: 1110px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns: 1fr 1050px 1fr;
+    }
+
     .gallery-layout {
         display: grid;
-        grid-template-columns: repeat(5 , minmax(auto , 1fr) );
+        grid-template-columns: repeat(5, minmax(auto, 1fr));
         gap: 20px;
     }
+    .canvas-container {
+        height: 25em;
+        width: 100%;
+    }
 }
-
