@@ -119,7 +119,6 @@ function onDown(ev) {
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
     renderMeme()
-    document.querySelector('.line-edit input[name="txt"]').focus()
 }
 
 function onMove(ev) {
@@ -139,4 +138,12 @@ function onUp() {
     if (gLineDragIdx === undefined || gLineDragIdx < 0) return
     setLineDrag(false)
     document.body.style.cursor = 'default'
+}
+
+function onClick(ev) {
+    const pos = getEvPos(ev)
+    const lineIdx = isLineClicked(pos)
+    if (lineIdx < 0) return
+    gMeme.selectedLineIdx = lineIdx
+    document.getElementById("txt-input").focus()
 }
