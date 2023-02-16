@@ -42,7 +42,7 @@
     <section class="gallery-container">
         <div class="search-container">
             <input type="text" placeholder="Search" oninput="onSearchByName(this.value)">
-            <button class="btn-generate" onclick="onRandomMeme()">Generate</button>
+            <button class="btn-generate" onclick="onRandomMeme()">I'm flexible</button>
             <div class="words-container"></div>
         </div>
         <section class="gallery">
@@ -57,22 +57,26 @@
         <div class="edit-meme">
             <!-- Line edit -->
             <div class="line-edit">
-                <input type="text" id="txt-input" class="txt" name="txt" placeholder="Write here" oninput="onSetLineTxt(this.value)">
-                <button class="btn btn-lines" onclick="onChangeLine()">Line</button>
-                <button class="btn btn-add-line" onclick="onAddLine()">+</button>
-                <button class="btn btn-remove-line" onclick="onRemoveLine()">remove</button>
+                <input type="text" id="txt-input" class="txt" name="txt" placeholder="Write here"
+                    oninput="onSetLineTxt(this.value)">
+                <button class="btn btn-lines" onclick="onChangeLine()"><i
+                        class="fa-solid fa-arrows-up-down"></i></button>
+                <button class="btn btn-add-line" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn-remove-line" onclick="onRemoveLine()"><i class="fa-solid fa-trash"></i></button>
             </div>
             <!-- Txt edit -->
             <div class="txt-edit">
-                <input type="color" oninput="onChangeColor(this.value)">
                 <button class="btn btn-increase-size" onclick="onChangeSize(1)">A+</button>
                 <button class="btn btn-decrease-size" onclick="onChangeSize(-1)">A-</button>
                 <img class="align" src="images/left.png" onclick="onChangeAlign('right')" alt="left">
                 <img class="align" src="images/center.png" onclick="onChangeAlign('center')" alt="center">
                 <img class="align" src="images/right.png" onclick="onChangeAlign('left')" alt="right">
-                <label for="list-fonts">Choose font</label>
-                <input list="fonts-list" id="list-fonts" name="fonts" class="list-fonts"
+                <input list="fonts-list" id="list-fonts" name="fonts" class="list-fonts" placeholder="Impact"
                     onchange="onSetFont(this.value)">
+                <input type="color" class="hidden-clr" name="color-stroke" oninput="onChangeStroke(this.value)">
+                <button class="btn-stroke" onclick="onOpenStroke()">A</button>
+                <input type="color" class="hidden-clr" name="color-picker" oninput="onChangeColor(this.value)">
+                <button class="btn-color" onclick="onOpenColor()"><i class="fa-solid fa-palette"></i></button>
             </div>
             <!-- Emojies -->
             <div class="emojies-list">
@@ -91,6 +95,8 @@
             </div>
         </div>
     </section>
+
+    <div class="flash-msg"><h3></h3></div>
 
     <datalist id="fonts-list">
         <option value="Impact"></option>

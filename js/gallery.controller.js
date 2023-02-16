@@ -26,8 +26,7 @@ function onRenderMemes() {
     const elGallery = document.querySelector('.gallery-content')
     let strHTML = ''
     memes.forEach((meme, i) => {
-        const img = findImgById(meme.selectedImgId)
-        strHTML += `<img src=${img.url} onclick="onMemeSelect(${img.id} , ${i})">`
+        strHTML += `<img src=${meme.imgUrl} onclick="onMemeSelect(${i})">`
     })
     elGallery.innerHTML = strHTML
 }
@@ -37,8 +36,7 @@ function addListeners() {
     addMouseListeners()
 }
 
-function onMemeSelect(id, idx) {
-    setImg(id)
+function onMemeSelect(idx) {
     setMeme(idx)
     renderMeme()
     openEditor()
@@ -151,4 +149,13 @@ function onClick(ev) {
     if (lineIdx < 0) return
     gMeme.selectedLineIdx = lineIdx
     document.getElementById("txt-input").focus()
+}
+
+function flashMsg(msg) {
+    document.querySelector('.flash-msg h3').innerText = msg
+    const elFlash = document.querySelector('.flash-msg')
+    elFlash.classList.add('open-msg')
+    setTimeout(() => {
+        elFlash.classList.remove('flash')
+    }, 1500);
 }

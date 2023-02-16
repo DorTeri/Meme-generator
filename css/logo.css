@@ -8,3 +8,7 @@
 .logo span {
     color: rgb(255, 255, 255);
 }
+
+.logo:hover {
+    cursor: pointer;
+}

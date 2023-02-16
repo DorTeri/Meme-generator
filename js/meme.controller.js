@@ -59,8 +59,14 @@ function onChangeColor(color) {
     renderMeme()
 }
 
+function onChangeStroke(color) {
+    changeStroke(color)
+    renderMeme()
+}
+
 function onAddEmoji(val) {
-    addEmoji(val)
+    const lineIdx = addLine(val)
+    setPlace(lineIdx)
     renderMeme()
 }
 
@@ -105,10 +111,26 @@ function changeTxtInput() {
 }
 
 function onSaveImage() {
-    const img = getMeme()
+    const meme = getMeme()
+    meme.imgUrl = gElCanvas.toDataURL('image/jpeg')
     let images = loadFromStorage(STORAGE_KEY)
-    !images ? images = [img] : images.push(img)
+    !images ? images = [meme] : images.push(meme)
     saveToStorage(STORAGE_KEY, images)
+    flashMsg('Image saved')
+}
+
+function onOpenColor() {
+    const colorPicker = document.querySelector('input[name="color-picker"]')
+    colorPicker.focus()
+    colorPicker.value = '#ffffff'
+    colorPicker.click()
+}
+
+function onOpenStroke() {
+    const colorPicker = document.querySelector('input[name="color-stroke"]')
+    colorPicker.focus()
+    colorPicker.value = '#000000'
+    colorPicker.click()
 }
 
 function resizeCanvas() {

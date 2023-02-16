@@ -1,27 +1,4 @@
-.txt {
-    width: 100%;
-    height: 30px;
-    margin-bottom: 10px;
-}
-
-.editor .btn {
-    margin-inline-end: 10px;
-    height: 20px;
-    width: 50px;
-}
-
 .editor .btn:hover {
-    cursor: pointer;
-    background-color: red;
-}
-
-.editor .align {
-    height: 30px;
-    width: 30px;
-    margin-inline-end: 20px;
-}
-
-.editor .align:hover {
     cursor: pointer;
 }
 
@@ -60,20 +37,70 @@
     display: block;
 }
 
-.emojies > * {
+.emojies>* {
     background-color: inherit;
     border: none;
     font-size: 60px;
     transition: .4s;
 }
 
-.emojies > *:hover {
+.emojies>*:hover {
     cursor: pointer;
     rotate: 30deg;
 }
 
 .line-edit {
     margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.txt {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    grid-column: 1/-1;
+}
+
+.line-edit>*:not(input) {
+    background-color: inherit;
+    border-radius: 10px;
+    margin-inline-end: 20px;
+    font-size: 2rem;
+    width: 50%;
+}
+
+.line-edit>*:not(input):hover {
+    border: 2px solid red;
+}
+
+.txt-edit {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.txt-edit>*:not(input) {
+    background-color: inherit;
+    border-radius: 10px;
+    font-size: 2rem;
+    width: 70%;
+}
+
+.txt-edit .list-fonts {
+    grid-column: 1/4;
+    width: 100%;
+}
+
+.txt-edit .align {
+    width: 50%;
+    margin-inline-end: 20px;
+}
+
+.txt-edit .align:hover {
+    cursor: pointer;
 }
 
 .shares {
@@ -81,7 +108,7 @@
     align-items: flex-end;
 }
 
-.shares > *:not(.btn-upload) {
+.shares>*:not(.btn-upload) {
     background-color: inherit;
     border-radius: 15px;
     padding: 5px;
@@ -90,7 +117,28 @@
     transition: .3s;
 }
 
-.shares > *:not(.btn-upload):hover {
+.shares>*:not(.btn-upload):hover {
     cursor: pointer;
     background-color: red;
+}
+
+.btn-color:hover ,
+.btn-stroke:hover {
+    cursor: pointer;
+    border: 2px solid red;
+}
+
+.btn-stroke {
+    font-weight: bold;
+}
+
+.hidden-clr {
+    background-color: white;
+    border: white;
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }

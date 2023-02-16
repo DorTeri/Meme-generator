@@ -1,4 +1,5 @@
 'use strict'
+
 const PAGE_SIZE = 3
 const gEmojies = createEmojies()
 
@@ -38,9 +39,9 @@ function createKeyWords() {
     return words
 }
 
-function addLine() {
+function addLine(txt = 'Write here') {
     gMeme.lines.push({
-        txt: 'Write here',
+        txt: txt,
         size: 20,
         align: 'center',
         color: 'white',
@@ -54,19 +55,18 @@ function getGWords() {
     return gSearchKeyWords
 }
 
-function addEmoji(val) {
-    gMeme.lines[gMeme.selectedLineIdx].txt += val
-}
-
 function search(name) {
     return gImgs.filter(img => img.keywords.some(key => key.includes(name)))
 }
 
 function randomMeme() {
     gMeme.selectedImgId = getRandomIntInclusive(1, gImgs.length - 1)
-    if (Math.random() > 0.5) addLine()
+    if (Math.random() > 0.5) {
+        addLine()
+        setPlace(1)
+    }
     gMeme.lines.forEach(line => {
-        line.txt = makeLorem(4)
+        line.txt = makeLorem(3)
         line.size = getRandomIntInclusive(15, 27)
         line.color = getRandomColor()
     })
@@ -123,8 +123,13 @@ function removeLine() {
 }
 
 function changeColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color
+    gMeme.lines[gMeme.selectedLineIdx].txtColor = color
 }
+
+function changeStroke(color) {
+    gMeme.lines[gMeme.selectedLineIdx].strokeColor = color
+}
+
 
 function changeSize(num) {
     gMeme.lines[gMeme.selectedLineIdx].size += num

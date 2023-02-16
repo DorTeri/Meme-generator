@@ -62,3 +62,31 @@ body {
     cursor: pointer;
     color: black;
 }
+
+.btn-generate {
+    margin-inline-start: 5px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.btn-generate:hover {
+    cursor: pointer;
+    outline: 2px solid red;
+}
+
+.flash-msg {
+    position: absolute;
+    bottom: 10%;
+    right: -100%;
+    width: 20vw;
+    height: 10vh;
+    transition: .4s;
+    background-color: black;
+    color: white;
+}
+
+.open-msg {
+    transition: .8s;
+    right: 0;
+}
