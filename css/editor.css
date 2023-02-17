@@ -2,10 +2,6 @@
     cursor: pointer;
 }
 
-.edit-meme {
-    display: grid;
-}
-
 .emojies-list {
     display: grid;
     grid-auto-flow: column;
