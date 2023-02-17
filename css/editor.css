@@ -39,7 +39,6 @@
 }
 
 .line-edit >*:not(input) {
-    height: 80%;
     align-self: center;
 }
 

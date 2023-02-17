@@ -13,12 +13,12 @@
 <body class="main-layout" onload="onInit()">
 
     <div class="main-screen" onclick="toggleMenu()"></div>
-    
+
     <div class="screen-content">
         <ul class="screen-items clean-list">
             <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
             <li><a href="#" onclick="onRenderMemes()">Memes</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
     </div>
 
@@ -29,7 +29,7 @@
                 <ul class="main-menu flex clean-list">
                     <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
                     <li><a href="#" onclick="onRenderMemes()">Memes</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
             <div class="menu-btn" onclick="toggleMenu()">
@@ -95,8 +95,14 @@
             </div>
         </div>
     </section>
-    <section class="about">
-
+    <section class="about full" id="about">
+        <div class="content main-layout">
+            <h2>About us</h2>
+            <h3>Our memes progress</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nihil amet libero unde enim, neque atque
+                ipsa voluptatibus ipsam quasi illo labore, doloremque recusandae repellat ratione minus molestias eum
+                praesentium.</p>
+        </div>
     </section>
 
     <div class="flash-msg"></div>

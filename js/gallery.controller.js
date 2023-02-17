@@ -122,7 +122,6 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     const lineIdx = isLineClicked(pos)
     if (isCircleClicked(pos)) {
-        console.log('hi')
         setCircleDrag(true)
         gStartPos = pos
         document.body.style.cursor = 'nwse-resize'

@@ -23,7 +23,7 @@ let gMeme = {
             strokeColor: 'black',
             x: 200,
             y: 50,
-            isDrag: false
+            isDrag: false,
         }
     ],
     font: 'Impact'
@@ -117,20 +117,25 @@ function setCircleDrag(isDrag) {
 }
 
 function handleCircleMove(ev) {
-    const isDrag  = gCircle.isDrag
+    const isDrag = gCircle.isDrag
     if (!isDrag) return
-
+    console.log('hi')
     const pos = getEvPos(ev)
-    const dx = pos.x - gStartPos.x
-    const dy = pos.y - gStartPos.y
+    const dx = gStartPos.x - pos.x
+    const dy = gStartPos.y - pos.y
     moveCircle(dx, dy)
     gStartPos = pos
+    // console.log('gStartPos', gStartPos)
     renderMeme()
 }
 
 function moveCircle(dx, dy) {
-    if(dx < 0 && dy < 0) gMeme.lines[gMeme.selectedLineIdx].size -= dx / 5
-    else gMeme.lines[gMeme.selectedLineIdx].size += dx / 5
+    console.log('dx', dx)
+    console.log('dy', dy)
+    if (dx < 0 && dy < 0) gMeme.lines[gMeme.selectedLineIdx].size += 0.5
+    else if (dx > 0 && dy > 0) gMeme.lines[gMeme.selectedLineIdx].size -= 0.5
+    else if(dx > 0 && dy < 0) console.log('leftDown')
+    else if(dx < 0 && dy > 0) console.log('rightUp')
 }
 
 function handleLineMove(ev) {
