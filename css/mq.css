@@ -9,7 +9,7 @@
     }
 
     .logo {
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 
     .gallery-layout {
@@ -77,6 +77,10 @@
     .main-layout {
         display: grid;
         grid-template-columns: minmax(20px, 1fr) minmax(auto, 1000px) minmax(20px, 1fr);
+    }
+
+    .logo {
+        font-size: 1.5rem;
     }
 
     .menu-btn {
