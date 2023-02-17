@@ -60,3 +60,9 @@ function getEvPos(ev) {
     }
     return pos
 }
+
+function resizeCanvas() {
+    let canvas = document.getElementById('responsive-canvas');
+    let heightRatio = 1.5;
+    canvas.height = canvas.width * heightRatio;
+}

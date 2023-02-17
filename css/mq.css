@@ -1,7 +1,7 @@
 @media (max-width: 650px) {
     .main-layout {
         display: grid;
-        grid-template-columns: 30px minmax(auto , 1fr) 30px;
+        grid-template-columns: 30px minmax(auto, 1fr) 30px;
     }
 
     .main-nav {
@@ -13,8 +13,18 @@
         grid-template-columns: repeat(2, minmax(auto, 1fr));
         gap: 20px;
     }
+
+    #edit-canvas {
+        margin-inline-start: 7%;
+    }
+
+    .canvas-container {
+        height: 100%;
+        width: 100%;
+    }
+
     .editor {
-        display: block;
+        display: grid;
         width: 100%;
         gap: 20px;
     }
@@ -33,12 +43,14 @@
         font-size: 2em;
         width: 50%;
     }
+
     .txt-edit>*:not(input) {
         background-color: inherit;
         border-radius: 10px;
         font-size: 2em;
         width: 50%;
     }
+
     .btn-page {
         transition: .5s;
         font-size: 1em;
@@ -50,7 +62,7 @@
 @media (min-width: 650px) {
     .main-layout {
         display: grid;
-        grid-template-columns: minmax(20px , 1fr) minmax(auto , 1000px) minmax(20px , 1fr);
+        grid-template-columns: minmax(20px, 1fr) minmax(auto, 1000px) minmax(20px, 1fr);
     }
 
     .menu-btn {
@@ -69,8 +81,9 @@
 
     .editor {
         display: grid;
-        width: 50%;
+        width: 100%;
         gap: 20px;
+        justify-content: center;
     }
 
     .emojies>* {
@@ -94,10 +107,12 @@
         font-size: 1.8rem;
         width: 70%;
     }
+
     .canvas-container {
         height: 28em;
         width: 100%;
     }
+
     .btn-page {
         transition: .5s;
         font-size: 1.2em;
@@ -111,6 +126,7 @@
         display: grid;
         grid-template-columns: 30px 1fr 30px;
     }
+
     body {
         justify-content: center;
     }
@@ -120,16 +136,19 @@
         grid-template-columns: repeat(4, minmax(auto, 1fr));
         gap: 20px;
     }
+
     .editor {
         display: block;
         gap: 10px;
     }
+
     .btn-page {
         transition: .5s;
         font-size: 2em;
         background-color: inherit;
         border: none;
     }
+
     .editor {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -148,8 +167,13 @@
         grid-template-columns: repeat(5, minmax(auto, 1fr));
         gap: 20px;
     }
+
     .canvas-container {
-        height: 25em;
+        height: 100%;
+        width: 100%;
+    }
+
+    #edit-canvas {
         width: 100%;
     }
 }
