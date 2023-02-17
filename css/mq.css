@@ -1,7 +1,7 @@
 @media (max-width: 650px) {
     .main-layout {
         display: grid;
-        grid-template-columns: 30px minmax(auto, 1fr) 30px;
+        grid-template-columns: minmax(20px, 1fr) minmax(auto, 450px) minmax(20px, 1fr);
     }
 
     .main-nav {
@@ -15,7 +15,8 @@
     }
 
     #edit-canvas {
-        margin-inline-start: 7%;
+        width: 100%;
+        height: 300px;
     }
 
     .canvas-container {
@@ -124,7 +125,7 @@
 @media (min-width: 950px) {
     .main-layout {
         display: grid;
-        grid-template-columns: 30px 1fr 30px;
+        grid-template-columns: 1fr 900px 1fr;
     }
 
     body {
@@ -135,11 +136,6 @@
         display: grid;
         grid-template-columns: repeat(4, minmax(auto, 1fr));
         gap: 20px;
-    }
-
-    .editor {
-        display: block;
-        gap: 10px;
     }
 
     .btn-page {
@@ -153,6 +149,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
+    }
+
+    .canvas-container {
+        justify-content: center;
     }
 }
 
