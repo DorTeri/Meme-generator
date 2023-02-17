@@ -46,7 +46,7 @@ body {
     font-weight: bold;
     color: red;
     display: inline-block;
-    margin-right: 40px;
+    margin: 0 30px 0 10px;
 }
 
 .words-container p:hover {
@@ -87,4 +87,20 @@ body {
 
 .open-msg {
     opacity: 1;
+}
+
+.search-container >* {
+    align-self: start;
+}
+
+.search-container .btn-words {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    align-self: end;
+}
+
+.search-container .btn-words:hover {
+    cursor: pointer;
+    outline: 2px solid red;
 }

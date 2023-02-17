@@ -5,3 +5,12 @@
 .main-layout>.full {
     grid-column: 1 / -1;
 }
+
+.container-layout {
+    display: grid;
+}
+
+.search-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr 1fr;
+}

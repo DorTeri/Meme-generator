@@ -38,6 +38,11 @@
     justify-items: center;
 }
 
+.line-edit >*:not(input) {
+    height: 80%;
+    align-self: center;
+}
+
 .txt {
     width: 100%;
     height: 30px;
@@ -56,18 +61,32 @@
     justify-items: center;
 }
 
+.txt-edit >*:not(input) {
+    align-self: center;
+}
+
+.txt-edit .btn {
+    width: 3.75rem;
+    height: 3.56rem;
+}
+
 .txt-edit .list-fonts {
     grid-column: 1/4;
     width: 100%;
 }
 
 .txt-edit .align {
-    width: 50%;
-    margin-inline-end: 20px;
+    width: 3.75rem;
+    height: 3.56rem;
+    border: 2px solid black;
 }
 
 .txt-edit .align:hover {
     cursor: pointer;
+}
+
+.txt-edit >*:hover {
+    border: 2px solid red;
 }
 
 .shares {
@@ -87,6 +106,11 @@
 .shares>*:not(.btn-upload):hover {
     cursor: pointer;
     background-color: red;
+}
+
+.shares a {
+    text-decoration: none;
+    color: black;
 }
 
 .btn-color:hover ,

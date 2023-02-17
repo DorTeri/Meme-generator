@@ -1,6 +1,6 @@
 'use strict'
 
-let showMenu = false;
+let showMenu = false
 let gClickedWord
 let gStartPos
 
@@ -103,14 +103,19 @@ function toggleMenu() {
 }
 
 function renderKeyWords() {
-    let words = loadFromStorage('KeyWords')
-    if (!words) words = createKeyWords()
+    let words = getWords()
     const elWordsContainer = document.querySelector('.words-container')
     let strHTML = ''
     words.forEach(word => {
         strHTML += `<p onclick="onSearch('${word.word}')" class="key-word" style="font-size: ${word.count}px">${word.word}</p>`
     })
     elWordsContainer.innerHTML = strHTML
+}
+
+function onShowMore(btn) {
+    changeBtnText(btn)
+    gShowMore = !gShowMore
+    renderKeyWords()
 }
 
 function onDown(ev) {

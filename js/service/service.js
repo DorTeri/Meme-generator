@@ -8,6 +8,7 @@ let gLineDragIdx
 let gImgs = createImages()
 let gPageIdx = 0
 let gSearchKeyWords
+let gShowMore = false
 
 let gMeme = {
     selectedImgId: 2,
@@ -25,18 +26,6 @@ let gMeme = {
         }
     ],
     font: 'Impact'
-}
-
-function createKeyWords() {
-    const words = [
-        { word: 'funny', count: 23 },
-        { word: 'baby', count: 25 },
-        { word: 'cute', count: 12 },
-        { word: 'dog', count: 31 },
-        { word: 'laugh', count: 15 }
-    ]
-    saveToStorage('KeyWords', words)
-    return words
 }
 
 function addLine(txt = 'Write here') {
@@ -81,7 +70,7 @@ function setPos(x, y, width, lineIdx, size) {
 
 function isLineClicked(clickedPos) {
     const lineIdx = gMeme.lines.findIndex(line => {
-        if(clickedPos.x > line.posLeft && clickedPos.x < line.posRight &&
+        if (clickedPos.x > line.posLeft && clickedPos.x < line.posRight &&
             clickedPos.y > line.posTop && clickedPos.y < line.posBottom) return true
     })
     gLineDragIdx = lineIdx
@@ -223,6 +212,45 @@ function createEmojies() {
 function getEmojies() {
     const startIdx = gPageIdx * PAGE_SIZE
     return gEmojies.slice(startIdx, startIdx + 3)
+}
+
+function getWords() {
+    if (!gShowMore) {
+        let words = loadFromStorage('KeyWords')
+        if(!words) words = createKeyWords()
+        const wordsSort = words.sort((word1, word2) => word1.count - word2.count)
+        const wordsMaxCount = wordsSort.slice(wordsSort.length - 5)
+        console.log('wordsMaxCount', wordsMaxCount)
+        return wordsMaxCount
+    } else {
+        const words = loadFromStorage('KeyWords')
+        return words
+    }
+}
+
+function changeBtnText(btn) {
+    btn.innerText = !gShowMore ? 'Show less' : 'Show more'
+}
+
+function createKeyWords() {
+    const words = [
+        { word: 'funny', count: 23 },
+        { word: 'baby', count: 25 },
+        { word: 'cute', count: 12 },
+        { word: 'dog', count: 31 },
+        { word: 'laugh', count: 15 },
+        { word: 'obama', count: 21 },
+        { word: 'explain', count: 11 },
+        { word: 'victory', count: 23 },
+        { word: 'kiss', count: 15 },
+        { word: 'toast', count: 22 },
+        { word: 'toystory', count: 18 },
+        { word: 'cat', count: 19 },
+        { word: 'bold', count: 20 },
+        { word: 'putin', count: 16 },
+    ]
+    saveToStorage('KeyWords', words)
+    return words
 }
 
 function createImages() {
