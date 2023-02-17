@@ -9,6 +9,7 @@ let gImgs = createImages()
 let gPageIdx = 0
 let gSearchKeyWords
 let gShowMore = false
+let gCircle = { pos: { x: 1, y: 1 }, size: 10, isDrag: false }
 
 let gMeme = {
     selectedImgId: 2,
@@ -81,11 +82,74 @@ function setLineDrag(boolean) {
     gMeme.lines[gLineDragIdx].isDrag = boolean
 }
 
+function showEdit() {
+    drawRect()
+    drawArc()
+}
+
+function drawRect() {
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    const width = gCtx.measureText(line.txt).width
+    gCtx.strokeStyle = 'white'
+    gCtx.strokeRect(line.x - width / 2 - 10, line.y - 20, width + 20, 40)
+}
+
+function drawArc() {
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    gCtx.beginPath()
+    gCtx.arc(line.posRight + 10, line.posBottom + 5, 10, 0, 2 * Math.PI)
+    gCtx.strokeStyle = 'grey'
+    gCtx.stroke()
+    gCtx.fillStyle = 'rgba(236,236,236,0.8)'
+    gCtx.fill()
+    const pos = { x: line.posRight + 10, y: line.posBottom + 5 }
+    gCircle.pos = pos
+}
+
+function isCircleClicked(clickedPos) {
+    const pos = gCircle.pos
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    return distance <= gCircle.size
+}
+
+function setCircleDrag(isDrag) {
+    gCircle.isDrag = isDrag
+}
+
+function handleCircleMove(ev) {
+    const isDrag  = gCircle.isDrag
+    if (!isDrag) return
+
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveCircle(dx, dy)
+    gStartPos = pos
+    renderMeme()
+}
+
+function moveCircle(dx, dy) {
+    if(dx < 0 && dy < 0) gMeme.lines[gMeme.selectedLineIdx].size -= dx / 5
+    else gMeme.lines[gMeme.selectedLineIdx].size += dx / 5
+}
+
+function handleLineMove(ev) {
+    if (gLineDragIdx < 0 || gLineDragIdx === undefined) return
+    const isDrag = gMeme.lines[gLineDragIdx].isDrag
+    if (!isDrag) return
+
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    gStartPos = pos
+    renderMeme()
+}
+
 function moveLine(dx, dy) {
     gMeme.lines[gLineDragIdx].x += dx
     gMeme.lines[gLineDragIdx].y += dy
 }
-
 
 function changePage(num) {
     gPageIdx += num
@@ -217,10 +281,9 @@ function getEmojies() {
 function getWords() {
     if (!gShowMore) {
         let words = loadFromStorage('KeyWords')
-        if(!words) words = createKeyWords()
+        if (!words) words = createKeyWords()
         const wordsSort = words.sort((word1, word2) => word1.count - word2.count)
         const wordsMaxCount = wordsSort.slice(wordsSort.length - 5)
-        console.log('wordsMaxCount', wordsMaxCount)
         return wordsMaxCount
     } else {
         const words = loadFromStorage('KeyWords')

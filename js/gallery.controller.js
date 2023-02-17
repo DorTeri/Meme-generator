@@ -121,28 +121,30 @@ function onShowMore(btn) {
 function onDown(ev) {
     const pos = getEvPos(ev)
     const lineIdx = isLineClicked(pos)
+    if (isCircleClicked(pos)) {
+        console.log('hi')
+        setCircleDrag(true)
+        gStartPos = pos
+        document.body.style.cursor = 'nwse-resize'
+    }
     if (lineIdx < 0 || gLineDragIdx === undefined) return
-    gMeme.selectedLineIdx = lineIdx
-    setLineDrag(true)
-    gStartPos = pos
-    document.body.style.cursor = 'grabbing'
-    renderMeme()
+    else {
+        gMeme.selectedLineIdx = lineIdx
+        setLineDrag(true)
+        gStartPos = pos
+        document.body.style.cursor = 'grabbing'
+        renderMeme()
+    }
 }
 
 function onMove(ev) {
-    if (gLineDragIdx < 0 || gLineDragIdx === undefined) return
-    const isDrag = gMeme.lines[gLineDragIdx].isDrag
-    if (!isDrag) return
-
-    const pos = getEvPos(ev)
-    const dx = pos.x - gStartPos.x
-    const dy = pos.y - gStartPos.y
-    moveLine(dx, dy)
-    gStartPos = pos
-    renderMeme()
+    handleLineMove(ev)
+    handleCircleMove(ev)
 }
 
 function onUp() {
+    setCircleDrag(false)
+    document.body.style.cursor = 'default'
     if (gLineDragIdx === undefined || gLineDragIdx < 0) return
     setLineDrag(false)
     document.body.style.cursor = 'default'
@@ -153,6 +155,7 @@ function onClick(ev) {
     const lineIdx = isLineClicked(pos)
     if (lineIdx < 0) return
     gMeme.selectedLineIdx = lineIdx
+    showEdit()
     document.getElementById("txt-input").focus()
 }
 

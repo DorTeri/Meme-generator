@@ -16,6 +16,8 @@ function renderMeme() {
         gMeme.lines.forEach((line, idx) =>
             drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx))
         changeTxtInput()
+        drawRect()
+        drawArc()
     }
 }
 
