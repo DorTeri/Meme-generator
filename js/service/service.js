@@ -80,12 +80,24 @@ function setLineDrag(boolean) {
     gMeme.lines[gLineDragIdx].isDrag = boolean
 }
 
-function drawRect(x , y , font , txt) {
+function drawRect(x, y, font, txt, align) {
     gCtx.font = font
     const width = gCtx.measureText(txt).width
+    x = checkAlign(x, align, width)
     const height = parseInt(gCtx.font.match(/\d+/), 10)
     gCtx.strokeStyle = 'white'
     gCtx.strokeRect(x - width / 2 - 10, y - height / 2, width + 20, height)
+}
+
+function checkAlign(x , align, width) {
+    switch (align) {
+        case 'center':
+            return x
+        case 'left':
+            return x + width / 2
+        case 'right':
+            return x - width / 2
+    }
 }
 
 function drawArc() {
@@ -180,7 +192,6 @@ function changeWordSize(word) {
 }
 
 function removeLine() {
-    console.log('line', gMeme.selectedLineIdx)
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 

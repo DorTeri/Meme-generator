@@ -42,7 +42,7 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
     gCtx.fillText(text, x, y, gElCanvas.width)
     gCtx.strokeText(text, x, y, gElCanvas.width)
     if (lineIdx === gMeme.selectedLineIdx) {
-        drawRect(x ,y, gCtx.font,text)
+        drawRect(x, y, gCtx.font, text, align)
         drawArc()
     }
 }
