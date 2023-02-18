@@ -14,7 +14,7 @@ function renderMeme() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         gMeme.lines.forEach((line, idx) =>
-            drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx))
+            drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx , line.rotate))
         changeTxtInput()
     }
 }
@@ -29,7 +29,7 @@ function renderEmojies() {
     elEmojies.innerHTML = strHTML
 }
 
-function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
+function drawText(text, txtColor, strokeClr, size, font, align, lineIdx, rotate) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeClr
     gCtx.fillStyle = txtColor
@@ -39,12 +39,20 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
 
     const x = gMeme.lines[lineIdx].x
     const y = gMeme.lines[lineIdx].y
+    const width = gCtx.measureText(text).width
+    const height = parseInt(gCtx.font.match(/\d+/), 10)
+
+    gCtx.save()
+    gCtx.translate(x + width / 2 , y + height / 2)
+    gCtx.rotate(rotate * Math.PI / 180)
+    gCtx.translate(-(x + width / 2) , -(y + height / 2))
     gCtx.fillText(text, x, y, gElCanvas.width)
     gCtx.strokeText(text, x, y, gElCanvas.width)
     if (lineIdx === gMeme.selectedLineIdx) {
         drawRect(x, y, gCtx.font, text, align)
-        drawArc()
+        drawArc(x, y, gCtx.font, text, align)
     }
+    gCtx.restore()
 }
 
 function onSetLineTxt(txt) {

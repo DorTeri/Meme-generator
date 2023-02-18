@@ -24,6 +24,7 @@ let gMeme = {
             x: 200,
             y: 50,
             isDrag: false,
+            rotate: 0
         }
     ],
     font: 'Impact'
@@ -38,7 +39,8 @@ function addLine(txt = 'Write here') {
         strokeColor: 'black',
         x: 1,
         y: 1,
-        isDrag: false
+        isDrag: false,
+        rotate: 0
     })
     return gMeme.lines.length - 1
 }
@@ -100,18 +102,18 @@ function checkAlign(x , align, width) {
     }
 }
 
-function drawArc() {
-    const line = gMeme.lines[gMeme.selectedLineIdx]
-    gCtx.font = `${line.size}px ${line.font}`
-    const width = gCtx.measureText(line.txt).width
+function drawArc(x, y, font, txt, align) {
+    gCtx.font = font
+    const width = gCtx.measureText(txt).width
     const height = parseInt(gCtx.font.match(/\d+/), 10)
+    x = checkAlign(x , align, width)
     gCtx.beginPath()
-    gCtx.arc(line.x + width / 2 + 10, line.y + height / 2, 10, 0, 2 * Math.PI)
+    gCtx.arc(x + width / 2 + 10, y + height / 2, 10, 0, 2 * Math.PI)
     gCtx.strokeStyle = 'grey'
     gCtx.stroke()
     gCtx.fillStyle = 'rgba(236,236,236,0.8)'
     gCtx.fill()
-    const pos = { x: line.x + width / 2 + 10, y: line.y + height / 2 }
+    const pos = { x: x + width / 2 + 10, y: y + height / 2 }
     gCircle.pos = pos
 }
 
@@ -139,8 +141,8 @@ function handleCircleMove(ev) {
 function moveCircle(dx, dy) {
     if (dx < 0 && dy < 0) gMeme.lines[gMeme.selectedLineIdx].size += 0.5
     else if (dx > 0 && dy > 0) gMeme.lines[gMeme.selectedLineIdx].size -= 0.5
-    else if (dx > 0 && dy < 0) console.log('leftDown')
-    else if (dx < 0 && dy > 0) console.log('rightUp')
+    else if (dx > 0 && dy < 0) gMeme.lines[gMeme.selectedLineIdx].rotate += 5
+    else if (dx < 0 && dy > 0) gMeme.lines[gMeme.selectedLineIdx].rotate -= 5
 }
 
 function handleLineMove(ev) {
