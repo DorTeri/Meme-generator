@@ -146,7 +146,7 @@ function moveCircle(dx, dy) {
 }
 
 function handleLineMove(ev) {
-    if (gLineDragIdx < 0 || gLineDragIdx === undefined) return
+    if (gLineDragIdx < 0 || gLineDragIdx === undefined || !gMeme.lines.length) return
     const isDrag = gMeme.lines[gLineDragIdx].isDrag
     if (!isDrag) return
 

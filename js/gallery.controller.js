@@ -158,7 +158,7 @@ function onClick(ev) {
     const pos = getEvPos(ev)
     const lineIdx = isLineClicked(pos)
     gMeme.selectedLineIdx = lineIdx
-    if(lineIdx >= 0) document.getElementById("txt-input").focus()
+    if (lineIdx >= 0) document.getElementById("txt-input").focus()
     renderMeme()
 }
 

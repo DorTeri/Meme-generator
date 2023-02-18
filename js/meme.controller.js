@@ -14,7 +14,7 @@ function renderMeme() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         gMeme.lines.forEach((line, idx) =>
-            drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx , line.rotate))
+            drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx, line.rotate))
         changeTxtInput()
     }
 }
@@ -43,9 +43,9 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx, rotate)
     const height = parseInt(gCtx.font.match(/\d+/), 10)
 
     gCtx.save()
-    gCtx.translate(x + width / 2 , y + height / 2)
+    gCtx.translate(x + width / 2, y + height / 2)
     gCtx.rotate(rotate * Math.PI / 180)
-    gCtx.translate(-(x + width / 2) , -(y + height / 2))
+    gCtx.translate(-(x + width / 2), -(y + height / 2))
     gCtx.fillText(text, x, y, gElCanvas.width)
     gCtx.strokeText(text, x, y, gElCanvas.width)
     if (lineIdx === gMeme.selectedLineIdx) {
