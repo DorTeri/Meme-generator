@@ -257,6 +257,7 @@ function findImgById(id) {
 function setMeme(idx) {
     const memes = loadFromStorage(STORAGE_KEY)
     const meme = memes[idx]
+    gMeme.upload = meme.upload
     gMeme.selectedImgId = meme.selectedImgId
     gMeme.lines = meme.lines
     gMeme.font = meme.font

@@ -8,7 +8,7 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function renderMeme() {
     const meme = getMeme()
-    const imgUrl = findImgById(meme.selectedImgId).url
+    const imgUrl = meme.upload ? meme.upload : findImgById(meme.selectedImgId).url
     const img = new Image()
     img.src = imgUrl
     img.onload = () => {
@@ -110,10 +110,6 @@ function onChangeLine() {
 function onChangeAlign(align) {
     changeAlign(align)
     renderMeme()
-}
-
-function selectLine() {
-    document.querySelector
 }
 
 function changeTxtInput() {

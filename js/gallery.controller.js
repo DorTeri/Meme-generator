@@ -23,6 +23,7 @@ function renderGallery(images = getImages()) {
 }
 
 function onRenderMemes() {
+    gMeme.upload = null
     hideEditor()
     const memes = loadFromStorage(STORAGE_KEY)
     const elGallery = document.querySelector('.gallery-content')
@@ -45,6 +46,7 @@ function onMemeSelect(idx) {
 }
 
 function onImgSelect(id) {
+    gMeme.upload = null
     openEditor()
     setImg(id)
     renderMeme()
@@ -53,6 +55,7 @@ function onImgSelect(id) {
 function onOpenGallery() {
     hideEditor()
     renderGallery()
+    gMeme.upload = null
 }
 
 function openEditor() {
