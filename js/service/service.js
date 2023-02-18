@@ -84,11 +84,6 @@ function setLineDrag(boolean) {
     gMeme.lines[gLineDragIdx].isDrag = boolean
 }
 
-// function showEdit() {
-//     drawRect()
-//     drawArc()
-// }
-
 function drawRect() {
     const line = gMeme.lines[gMeme.selectedLineIdx]
     const width = gCtx.measureText(line.txt).width
@@ -163,6 +158,17 @@ function changePage(num) {
         disableButton('next')
     } else if (!gPageIdx) disableButton('prev')
     else disableButton('none')
+}
+
+function flashMsg(msg) {
+    const elMsg = document.querySelector('.flash-msg')
+    if(gCurrLang === 'en') elMsg.innerHTML = msg
+    else elMsg.innerHTML = `<h2>נשמר</h2><i class="fa-regular fa-floppy-disk"></i>`
+    const elFlash = document.querySelector('.flash-msg')
+    elFlash.classList.add('open-msg')
+    setTimeout(() => {
+        elFlash.classList.remove('open-msg')
+    }, 1500);
 }
 
 function getKeyWords() {
@@ -302,6 +308,13 @@ function getWords() {
 
 function changeBtnText(btn) {
     btn.innerText = !gShowMore ? 'Show less' : 'Show more'
+    if(!gShowMore) {
+        if(gCurrLang === 'en') btn.innerText = 'Show less'
+        else btn.innerText = 'פחות'
+    } else {
+        if(gCurrLang === 'en') btn.innerText = 'Show more'
+        else btn.innerText = 'עוד'
+    }
 }
 
 function createKeyWords() {
@@ -327,23 +340,23 @@ function createKeyWords() {
 
 function createImages() {
     return [
-        { id: 1, url: 'images/1.jpg', keywords: ['funny', 'tramp'] },
-        { id: 2, url: 'images/2.jpg', keywords: ['cute', 'dog'] },
-        { id: 3, url: 'images/3.jpg', keywords: ['cute', 'baby', 'dog'] },
-        { id: 4, url: 'images/4.jpg', keywords: ['cat', 'laptop'] },
-        { id: 5, url: 'images/5.jpg', keywords: ['victory', 'baby'] },
-        { id: 6, url: 'images/6.jpg', keywords: ['funny', 'explain'] },
-        { id: 7, url: 'images/7.jpg', keywords: ['baby', 'suprised'] },
-        { id: 8, url: 'images/8.jpg', keywords: ['funny', 'watching'] },
-        { id: 9, url: 'images/9.jpg', keywords: ['baby', 'laugh'] },
-        { id: 10, url: 'images/10.jpg', keywords: ['obama', 'laugh'] },
-        { id: 11, url: 'images/11.jpg', keywords: ['kiss', 'funny'] },
-        { id: 12, url: 'images/12.jpg', keywords: ['haim', 'point'] },
-        { id: 13, url: 'images/13.jpg', keywords: ['wallstreet', 'toast'] },
-        { id: 14, url: 'images/14.jpg', keywords: ['scary', 'sunglass'] },
-        { id: 15, url: 'images/15.jpg', keywords: ['exactly'] },
-        { id: 16, url: 'images/16.jpg', keywords: ['laugh', 'bold'] },
-        { id: 17, url: 'images/17.jpg', keywords: ['putin', 'piece'] },
-        { id: 18, url: 'images/18.jpg', keywords: ['toystory', 'buz'] },
+        { id: 1, url: 'images/1.jpg', keywords: ['funny', 'tramp' , 'מצחיק' , 'טראמפ'] },
+        { id: 2, url: 'images/2.jpg', keywords: ['cute', 'dog' , 'חמוד' , 'כלב'] },
+        { id: 3, url: 'images/3.jpg', keywords: ['cute', 'baby', 'dog' , 'חמוד' , 'תינוק' , 'כלב'] },
+        { id: 4, url: 'images/4.jpg', keywords: ['cat', 'laptop' , 'לפטופ' , 'חתול'] },
+        { id: 5, url: 'images/5.jpg', keywords: ['victory', 'baby', 'ניצחון' , 'תינוק'] },
+        { id: 6, url: 'images/6.jpg', keywords: ['funny', 'explain', 'מסביר' , 'חמוד'] },
+        { id: 7, url: 'images/7.jpg', keywords: ['baby', 'suprised', 'תינוק' , 'מופתע'] },
+        { id: 8, url: 'images/8.jpg', keywords: ['funny', 'watching', 'מצחיק' , 'צופה'] },
+        { id: 9, url: 'images/9.jpg', keywords: ['baby', 'laugh', 'תינוק' , 'צוחק'] },
+        { id: 10, url: 'images/10.jpg', keywords: ['obama', 'laugh', 'אובמה' , 'צוחק'] },
+        { id: 11, url: 'images/11.jpg', keywords: ['kiss', 'funny', 'נשיקה' , 'מצחיק'] },
+        { id: 12, url: 'images/12.jpg', keywords: ['haim', 'point', 'חיים' , 'מצביע'] },
+        { id: 13, url: 'images/13.jpg', keywords: ['wallstreet', 'toast', 'וולסטריט' , 'לחיים'] },
+        { id: 14, url: 'images/14.jpg', keywords: ['scary', 'sunglass', 'מפחיד' , 'משקפי שמש'] },
+        { id: 15, url: 'images/15.jpg', keywords: ['exactly', 'בדיוק'] },
+        { id: 16, url: 'images/16.jpg', keywords: ['laugh', 'bold', 'צוחק' , 'קירח'] },
+        { id: 17, url: 'images/17.jpg', keywords: ['putin', 'piece', 'פוטין' , 'שלום'] },
+        { id: 18, url: 'images/18.jpg', keywords: ['toystory', 'buz', 'צעצוע של סיפור' , 'באז'] },
     ]
 }

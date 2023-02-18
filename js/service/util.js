@@ -18,6 +18,16 @@ function makeLorem(wordCount = 100) {
     return txt
 }
 
+function makeLoremHE(wordCount = 100) {
+    const words = ['השמיים', 'מעל', 'נהמל', 'היה', 'הצבע של הטלוויזיה', 'מיותר', 'אל', 'הצאנל המת', '.', 'הכל', 'זה קרה', 'פחות או יותר', '.', 'אני', 'היה', 'הסיפור', 'חלק בחלק', 'מתוך כמות אנשים', 'בהחלט', 'קרה', 'כל פעם', 'זה']
+    var txt = ''
+    while (wordCount > 0) {
+        wordCount--
+        txt += words[Math.floor(Math.random() * words.length)] + ' '
+    }
+    return txt
+}
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';

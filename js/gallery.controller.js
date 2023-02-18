@@ -3,12 +3,14 @@
 let showMenu = false
 let gClickedWord
 let gStartPos
+let gCurrLang = 'en'
 
 function onInit() {
     addListeners()
     renderGallery()
     renderEmojies()
     renderKeyWords()
+    doTrans()
 }
 
 function renderGallery(images = getImages()) {
@@ -153,17 +155,12 @@ function onClick(ev) {
     const pos = getEvPos(ev)
     const lineIdx = isLineClicked(pos)
     gMeme.selectedLineIdx = lineIdx
-    // showEdit()
     if(lineIdx >= 0) document.getElementById("txt-input").focus()
     renderMeme()
 }
 
-function flashMsg(msg) {
-    console.log('msg', msg)
-    document.querySelector('.flash-msg').innerHTML = msg
-    const elFlash = document.querySelector('.flash-msg')
-    elFlash.classList.add('open-msg')
-    setTimeout(() => {
-        elFlash.classList.remove('open-msg')
-    }, 1500);
+function onSetLang(btn) {
+    gCurrLang === 'en' ? gCurrLang = 'he' : gCurrLang = 'en'
+    gCurrLang === 'en' ? btn.innerText = 'HE' : btn.innerText = 'EN'
+    doTrans()
 }

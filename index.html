@@ -16,9 +16,9 @@
 
     <div class="screen-content">
         <ul class="screen-items clean-list">
-            <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-            <li><a href="#" onclick="onRenderMemes()">Memes</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a data-trans="screen-gallery" href="#" onclick="onOpenGallery()">Gallery</a></li>
+            <li><a data-trans="screen-memes" href="#" onclick="onRenderMemes()">Memes</a></li>
+            <li><a data-trans="screen-about" href="#about">About</a></li>
         </ul>
     </div>
 
@@ -27,9 +27,9 @@
             <div class="logo"><span>Meme genera</span>Dor</div>
             <nav class="main-nav">
                 <ul class="main-menu flex clean-list">
-                    <li><a href="#" onclick="onOpenGallery()">Gallery</a></li>
-                    <li><a href="#" onclick="onRenderMemes()">Memes</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a data-trans="nav-gallery" href="#" onclick="onOpenGallery()">Gallery</a></li>
+                    <li><a data-trans="nav-memes" href="#" onclick="onRenderMemes()">Memes</a></li>
+                    <li><a data-trans="nav-about" href="#about">About</a></li>
                 </ul>
             </nav>
             <div class="menu-btn" onclick="toggleMenu()">
@@ -41,10 +41,11 @@
     </header>
     <section class="gallery-container container-layout">
         <div class="search-container search-layout">
-            <input type="text" placeholder="Search" oninput="onSearchByName(this.value)">
-            <button class="btn-generate" onclick="onRandomMeme()">I'm flexible</button>
+            <input data-trans="search" list="search-gallery" placeholder="Search" oninput="onSearchByName(this.value)">
+            <button data-trans="flexible" class="btn-generate" onclick="onRandomMeme()">I'm flexible</button>
             <div class="words-container"></div>
-            <button class="btn-words" onclick="onShowMore(this)">Show more</button>
+            <button data-trans="show-more" class="btn-words" onclick="onShowMore(this)">Show more</button>
+            <button class="btn-lang" onclick="onSetLang(this)">HE</button>
         </div>
         <section class="gallery">
             <div class="gallery-content gallery-layout"></div>
@@ -87,9 +88,9 @@
             </div>
             <!-- Shares -->
             <div class="shares">
-                <button class="btn-save" onclick="onSaveImage()">Save</button>
-                <a class="btn-download" href="#" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
-                <button onclick="onUploadImg()" class="btn-share">Share</button>
+                <button data-trans="save" class="btn-save" onclick="onSaveImage()">Save</button>
+                <a data-trans="download" class="btn-download" href="#" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                <button data-trans="share" onclick="onUploadImg()" class="btn-share">Share</button>
                 <input class="btn-upload" type="file" class="file-input btn" name="image"
                     onchange="onImgInput(event)" />
             </div>
@@ -97,11 +98,9 @@
     </section>
     <section class="about full" id="about">
         <div class="content main-layout">
-            <h2>About us</h2>
-            <h3>Our memes progress</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet nihil amet libero unde enim, neque atque
-                ipsa voluptatibus ipsam quasi illo labore, doloremque recusandae repellat ratione minus molestias eum
-                praesentium.</p>
+            <h2 data-trans="about-title">About us</h2>
+            <h3 data-trans="about-sub">Our memes progress</h3>
+            <p data-trans="about-desc"></p>
         </div>
     </section>
 
@@ -116,12 +115,26 @@
         <option value="Courier"></option>
     </datalist>
 
-    <datalist id="gallery-search"></datalist>
+    <datalist id="search-gallery">
+        <option data-trans="option-funny" value="funny"></option>
+        <option data-trans="option-baby" value="baby"></option>
+        <option data-trans="option-cute" value="cute"></option>
+        <option data-trans="option-dog" value="dog"></option>
+        <option data-trans="option-laugh" value="laugh"></option>
+        <option data-trans="option-obama" value="obama"></option>
+        <option data-trans="option-explain" value="explain"></option>
+        <option data-trans="option-victory" value="victory"></option>
+        <option data-trans="option-kiss" value="kiss"></option>
+        <option data-trans="option-toast" value="toast"></option>
+        <option data-trans="option-toystory" value="toystory"></option>
+        <option data-trans="option-cat" value="cat"></option>
+    </datalist>
 
 
     <script src="js/service/util.js"></script>
     <script src="js/service/storage.js"></script>
     <script src="js/service/sharing.js"></script>
+    <script src="js/service/i18n.js"></script>
     <script src="js/service/service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>

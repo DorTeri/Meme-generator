@@ -98,10 +98,23 @@ body {
     background-color: black;
     color: white;
     border-radius: 10px;
-    align-self: end;
+    align-self: start;
 }
 
 .search-container .btn-words:hover {
+    cursor: pointer;
+    outline: 2px solid red;
+}
+
+.search-container .btn-lang {
+    background-color: inherit;
+    border-radius: 15px;
+    margin-inline-start: 5px;
+    background-color: black;
+    color: white;
+}
+
+.search-container .btn-lang:hover {
     cursor: pointer;
     outline: 2px solid red;
 }

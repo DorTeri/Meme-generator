@@ -18,6 +18,16 @@
         gap: 20px;
     }
 
+    .search-layout {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .btn-lang {
+        display: block;
+    }
+
     #edit-canvas {
         width: 100%;
         height: 18em;
@@ -95,6 +105,11 @@
         gap: 20px;
     }
 
+    .search-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+    }
+
     .editor {
         display: grid;
         width: 100%;
@@ -154,6 +169,11 @@
         display: grid;
         grid-template-columns: repeat(4, minmax(auto, 1fr));
         gap: 20px;
+    }
+
+    .search-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
     }
 
     .btn-page {
