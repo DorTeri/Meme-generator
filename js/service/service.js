@@ -34,9 +34,11 @@ function addLine(txt = 'Write here') {
         txt: txt,
         size: 20,
         align: 'center',
-        color: 'white',
+        txtColor: 'white',
+        strokeColor: 'black',
         x: 1,
         y: 1,
+        isDrag: false
     })
     return gMeme.lines.length - 1
 }
@@ -82,27 +84,30 @@ function setLineDrag(boolean) {
     gMeme.lines[gLineDragIdx].isDrag = boolean
 }
 
-function showEdit() {
-    drawRect()
-    drawArc()
-}
+// function showEdit() {
+//     drawRect()
+//     drawArc()
+// }
 
 function drawRect() {
     const line = gMeme.lines[gMeme.selectedLineIdx]
     const width = gCtx.measureText(line.txt).width
+    const height = parseInt(gCtx.font.match(/\d+/), 10)
     gCtx.strokeStyle = 'white'
-    gCtx.strokeRect(line.x - width / 2 - 10, line.y - 20, width + 20, 40)
+    gCtx.strokeRect(line.x - width / 2 - 10, line.y - height / 2, width + 20, height)
 }
 
 function drawArc() {
     const line = gMeme.lines[gMeme.selectedLineIdx]
+    const width = gCtx.measureText(line.txt).width
+    const height = parseInt(gCtx.font.match(/\d+/), 10)
     gCtx.beginPath()
-    gCtx.arc(line.posRight + 10, line.posBottom + 5, 10, 0, 2 * Math.PI)
+    gCtx.arc(line.x + width / 2 + 10, line.y + height / 2, 10, 0, 2 * Math.PI)
     gCtx.strokeStyle = 'grey'
     gCtx.stroke()
     gCtx.fillStyle = 'rgba(236,236,236,0.8)'
     gCtx.fill()
-    const pos = { x: line.posRight + 10, y: line.posBottom + 5 }
+    const pos = { x: line.x + width / 2 + 10, y: line.y + height / 2 }
     gCircle.pos = pos
 }
 
@@ -119,19 +124,15 @@ function setCircleDrag(isDrag) {
 function handleCircleMove(ev) {
     const isDrag = gCircle.isDrag
     if (!isDrag) return
-    console.log('hi')
     const pos = getEvPos(ev)
     const dx = gStartPos.x - pos.x
     const dy = gStartPos.y - pos.y
     moveCircle(dx, dy)
     gStartPos = pos
-    // console.log('gStartPos', gStartPos)
     renderMeme()
 }
 
 function moveCircle(dx, dy) {
-    console.log('dx', dx)
-    console.log('dy', dy)
     if (dx < 0 && dy < 0) gMeme.lines[gMeme.selectedLineIdx].size += 0.5
     else if (dx > 0 && dy > 0) gMeme.lines[gMeme.selectedLineIdx].size -= 0.5
     else if(dx > 0 && dy < 0) console.log('leftDown')
@@ -222,6 +223,7 @@ function setPlace(lineIdx) {
             gMeme.lines[lineIdx].y = gElCanvas.height / 2
             break
     }
+    gMeme.selectedLineIdx = lineIdx
 }
 
 function getMeme() {
@@ -239,6 +241,7 @@ function findImgById(id) {
 function setMeme(idx) {
     const memes = loadFromStorage(STORAGE_KEY)
     const meme = memes[idx]
+    gMeme.selectedImgId = meme.selectedImgId
     gMeme.lines = meme.lines
     gMeme.font = meme.font
 }
@@ -249,6 +252,7 @@ function setImg(id) {
 
 function getLineTxt() {
     const idx = gMeme.selectedLineIdx
+    if(idx < 0) return
     return gMeme.lines[idx].txt
 }
 

@@ -152,10 +152,10 @@ function onUp() {
 function onClick(ev) {
     const pos = getEvPos(ev)
     const lineIdx = isLineClicked(pos)
-    if (lineIdx < 0) return
     gMeme.selectedLineIdx = lineIdx
-    showEdit()
-    document.getElementById("txt-input").focus()
+    // showEdit()
+    if(lineIdx >= 0) document.getElementById("txt-input").focus()
+    renderMeme()
 }
 
 function flashMsg(msg) {

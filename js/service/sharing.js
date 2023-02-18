@@ -43,8 +43,12 @@ function doUploadImg(imgDataUrl, onSuccess) {
 }
 
 function downloadImg(elLink) {
-    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
-    elLink.href = imgContent
+    gMeme.selectedLineIdx = -1
+    renderMeme()
+    setTimeout(() => {
+        const imgContent = gElCanvas.toDataURL('image/jpeg')
+        elLink.href = imgContent
+    }, 100);
 }
 
 function onImgInput(ev) {

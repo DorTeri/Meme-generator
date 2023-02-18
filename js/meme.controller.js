@@ -16,8 +16,10 @@ function renderMeme() {
         gMeme.lines.forEach((line, idx) =>
             drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx))
         changeTxtInput()
-        drawRect()
-        drawArc()
+        if (gMeme.selectedLineIdx >= 0) {
+            drawRect()
+            drawArc()
+        }
     }
 }
 
@@ -41,7 +43,7 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
 
     const x = gMeme.lines[lineIdx].x
     const y = gMeme.lines[lineIdx].y
-    setPos(x, y, gCtx.measureText(text).width, lineIdx,size)
+    setPos(x, y, gCtx.measureText(text).width, lineIdx, size)
     gCtx.fillText(text, x, y, gElCanvas.width)
     gCtx.strokeText(text, x, y, gElCanvas.width)
 }
@@ -109,16 +111,21 @@ function selectLine() {
 
 function changeTxtInput() {
     const txt = getLineTxt()
+    if (!txt) return
     document.querySelector('input[name="txt"]').value = txt
 }
 
 function onSaveImage() {
-    const meme = getMeme()
-    meme.imgUrl = gElCanvas.toDataURL('image/jpeg')
-    let images = loadFromStorage(STORAGE_KEY)
-    !images ? images = [meme] : images.push(meme)
-    saveToStorage(STORAGE_KEY, images)
-    flashMsg(`<h2>saved</h2><i class="fa-regular fa-floppy-disk"></i>`)
+    gMeme.selectedLineIdx = -1
+    renderMeme()
+    setTimeout(() => {
+        const meme = getMeme()
+        meme.imgUrl = gElCanvas.toDataURL('image/jpeg')
+        let images = loadFromStorage(STORAGE_KEY)
+        !images ? images = [meme] : images.push(meme)
+        saveToStorage(STORAGE_KEY, images)
+        flashMsg(`<h2>saved</h2><i class="fa-regular fa-floppy-disk"></i>`)
+    }, 100)
 }
 
 function onOpenColor() {
