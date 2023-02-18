@@ -43,7 +43,6 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
 
     const x = gMeme.lines[lineIdx].x
     const y = gMeme.lines[lineIdx].y
-    setPos(x, y, gCtx.measureText(text).width, lineIdx, size)
     gCtx.fillText(text, x, y, gElCanvas.width)
     gCtx.strokeText(text, x, y, gElCanvas.width)
 }

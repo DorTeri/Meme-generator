@@ -52,9 +52,10 @@ function addTouchListeners() {
 
 function getEvPos(ev) {
     // Gets the offset pos , the default pos
+    const rect = gElCanvas.getBoundingClientRect()
     let pos = {
-        x: ev.offsetX,
-        y: ev.offsetY,
+        x: ev.clientX - rect.left,
+        y: ev.clientY - rect.top,
     }
     // Check if its a touch ev
     if (TOUCH_EVS.includes(ev.type)) {
