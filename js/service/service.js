@@ -91,7 +91,7 @@ function drawRect(x, y, font, txt, align) {
     gCtx.strokeRect(x - width / 2 - 10, y - height / 2, width + 20, height)
 }
 
-function checkAlign(x , align, width) {
+function checkAlign(x, align, width) {
     switch (align) {
         case 'center':
             return x
@@ -106,7 +106,7 @@ function drawArc(x, y, font, txt, align) {
     gCtx.font = font
     const width = gCtx.measureText(txt).width
     const height = parseInt(gCtx.font.match(/\d+/), 10)
-    x = checkAlign(x , align, width)
+    x = checkAlign(x, align, width)
     gCtx.beginPath()
     gCtx.arc(x + width / 2 + 10, y + height / 2, 10, 0, 2 * Math.PI)
     gCtx.strokeStyle = 'grey'
