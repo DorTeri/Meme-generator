@@ -3,3 +3,24 @@
     margin-top: 30px;
     background-color: rgb(236, 236, 236);
 }
+
+.socials-icons > * {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    margin-inline-end: 20px;
+    padding: 5px;
+}
+
+.socials-icons > *:hover {
+    cursor: pointer;
+}
+
+.facebook:hover ,
+.linkedin:hover {
+    color: rgb(47, 47, 201);
+}
+
+.twitter:hover {
+    color: rgb(35, 174, 255);
+}

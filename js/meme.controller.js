@@ -16,10 +16,6 @@ function renderMeme() {
         gMeme.lines.forEach((line, idx) =>
             drawText(line.txt, line.txtColor, line.strokeColor, line.size, meme.font, line.align, idx))
         changeTxtInput()
-        if (gMeme.selectedLineIdx >= 0) {
-            drawRect()
-            drawArc()
-        }
     }
 }
 
@@ -45,6 +41,10 @@ function drawText(text, txtColor, strokeClr, size, font, align, lineIdx) {
     const y = gMeme.lines[lineIdx].y
     gCtx.fillText(text, x, y, gElCanvas.width)
     gCtx.strokeText(text, x, y, gElCanvas.width)
+    if (lineIdx === gMeme.selectedLineIdx) {
+        drawRect(x ,y, gCtx.font,text)
+        drawArc()
+    }
 }
 
 function onSetLineTxt(txt) {

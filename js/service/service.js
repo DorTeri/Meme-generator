@@ -80,13 +80,12 @@ function setLineDrag(boolean) {
     gMeme.lines[gLineDragIdx].isDrag = boolean
 }
 
-function drawRect() {
-    const line = gMeme.lines[gMeme.selectedLineIdx]
-    gCtx.font = `${line.size}px ${line.font}`
-    const width = gCtx.measureText(line.txt).width
+function drawRect(x , y , font , txt) {
+    gCtx.font = font
+    const width = gCtx.measureText(txt).width
     const height = parseInt(gCtx.font.match(/\d+/), 10)
     gCtx.strokeStyle = 'white'
-    gCtx.strokeRect(line.x - width / 2 - 10, line.y - height / 2, width + 20, height)
+    gCtx.strokeRect(x - width / 2 - 10, y - height / 2, width + 20, height)
 }
 
 function drawArc() {

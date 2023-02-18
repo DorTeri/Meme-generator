@@ -89,7 +89,8 @@
             <!-- Shares -->
             <div class="shares">
                 <button data-trans="save" class="btn-save" onclick="onSaveImage()">Save</button>
-                <a data-trans="download" class="btn-download" href="#" onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                <a data-trans="download" class="btn-download" href="#" onclick="downloadImg(this)"
+                    download="my-img.jpg">Download</a>
                 <button data-trans="share" onclick="onUploadImg()" class="btn-share">Share</button>
                 <input class="btn-upload" type="file" class="file-input btn" name="image"
                     onchange="onImgInput(event)" />
@@ -101,8 +102,17 @@
             <h2 data-trans="about-title">About us</h2>
             <h3 data-trans="about-sub">Our memes progress</h3>
             <p data-trans="about-desc"></p>
+            <div class="socials-icons">
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook facebook"></i></a>
+                <a href="https://twitter.com/"><i class="fa-brands fa-twitter twitter"></i></a>
+                <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin linkedin"></i></a>
+            </div>
         </div>
     </section>
+
+    <footer class="full">
+        <small>© 2023 Dor Tayari ©</small>
+    </footer>
 
     <div class="flash-msg"></div>
 
