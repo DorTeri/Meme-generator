@@ -318,13 +318,13 @@ function getWords() {
 }
 
 function changeBtnText(btn) {
-    btn.innerText = !gShowMore ? 'Show less' : 'Show more'
+    btn.innerText = !gShowMore ? 'Less words' : 'More words'
     if (!gShowMore) {
-        if (gCurrLang === 'en') btn.innerText = 'Show less'
-        else btn.innerText = 'פחות'
+        if (gCurrLang === 'en') btn.innerText = 'Less words'
+        else btn.innerText = 'פחות מילים'
     } else {
-        if (gCurrLang === 'en') btn.innerText = 'Show more'
-        else btn.innerText = 'עוד'
+        if (gCurrLang === 'en') btn.innerText = 'More words'
+        else btn.innerText = 'עוד מילים'
     }
 }
 

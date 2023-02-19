@@ -23,7 +23,8 @@ body {
     background-color: antiquewhite;
 }
 
-.gallery-content img {
+.gallery-content > * {
+    border-radius: 5px;
     width: 100%;
 }
 
@@ -83,7 +84,7 @@ body {
     transition: .8s;
 }
 
-.flash-msg > * {
+.flash-msg>* {
     margin: 0;
 }
 
@@ -92,7 +93,7 @@ body {
     opacity: 1;
 }
 
-.search-container >* {
+.search-container>* {
     align-self: start;
 }
 
@@ -109,11 +110,16 @@ body {
 }
 
 .search-container .btn-lang {
-    background-color: inherit;
-    border-radius: 15px;
-    margin-inline-start: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    margin-inline-start: auto;
     background-color: black;
     color: white;
+}
+
+.search-title {
+    margin: 0 0 0 50%;
+    translate: -50%;
 }
 
 .search-container .btn-lang:hover {

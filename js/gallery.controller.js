@@ -111,7 +111,7 @@ function toggleMenu() {
 function renderKeyWords() {
     let words = getWords()
     const elWordsContainer = document.querySelector('.words-container')
-    let strHTML = ''
+    let strHTML = '<h2 class="search-title">Popular searches</h2>'
     words.forEach(word => {
         strHTML += `<p onclick="onSearch('${word.word}')" class="key-word" style="font-size: ${word.count}px">${word.word}</p>`
     })
@@ -164,7 +164,12 @@ function onClick(ev) {
 }
 
 function onSetLang(btn) {
-    gCurrLang === 'en' ? gCurrLang = 'he' : gCurrLang = 'en'
-    gCurrLang === 'en' ? btn.innerText = 'HE' : btn.innerText = 'EN'
+    if(gCurrLang === 'en') {
+        gCurrLang = 'he'
+        btn.innerText = 'EN'
+    } else {
+        gCurrLang = 'en'
+        btn.innerText = 'HE'
+    }
     doTrans()
 }

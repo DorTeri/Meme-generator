@@ -22,7 +22,7 @@ let gTrans = {
     'option-toast': {en: 'toast' , he: 'לחיים'},
     'option-toystory': {en: 'toystory' , he: 'צעצוע של סיפור'},
     'option-cat': {en: 'cat' , he: 'חתול'},
-    'show-more': {en: 'Show more' , he: 'עוד'},
+    'show-more': {en: 'More words' , he: 'עוד מילים'},
     'about-title': {en: 'About us' , he: 'קצת עלינו'},
     'about-sub': {en: 'Our memes project' , he: 'פרוייקט המימים שלנו'},
     'about-desc': {en: makeLorem(70) , he: makeLoremHE(70)},
