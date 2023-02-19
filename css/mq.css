@@ -118,6 +118,7 @@
     }
 
     .edit-meme {
+        gap: 12px;
         display: grid;
     }
 
@@ -132,7 +133,7 @@
         background-color: inherit;
         border-radius: 10px;
         font-size: 2rem;
-        width: 50%;
+        width: 40%;
     }
 
     .txt-edit>*:not(input) {
