@@ -1,6 +1,7 @@
 'use strict'
 
 let gTrans = {
+    upload: {en: 'Upload Image' , he: 'העלה תמונה'},
     'nav-gallery': {en: 'GALLERY' , he: 'גלריה'},
     'nav-memes': {en: 'MEMES' , he: 'ממים'},
     'nav-about': {en: 'ABOUT' , he: 'עלינו'},

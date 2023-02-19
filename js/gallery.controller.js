@@ -15,7 +15,8 @@ function onInit() {
 
 function renderGallery(images = getImages()) {
     const elGallery = document.querySelector('.gallery-content')
-    let strHTML = ''
+    let strHTML = `<input onchange="onImgInput(event)" id="upload" hidden type="file"/>
+    <label data-trans="upload" for="upload" class="btn-upload" tabindex="0">Upload File</label>`
     images.forEach(img => {
         strHTML += `<img src=${img.url} onclick="onImgSelect(${img.id})">`
     })

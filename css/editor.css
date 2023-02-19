@@ -54,9 +54,10 @@
 }
 
 .txt {
-    width: 100%;
+    width: 95%;
     height: 30px;
     margin-bottom: 10px;
+    border-radius: 5px;
     grid-column: 1/-1;
 }
 
@@ -91,7 +92,7 @@
 .txt-edit .list-fonts {
     grid-column: 1/4;
     border-radius: 15px;
-    width: 88%;
+    width: 90%;
     height: 70%;
     align-self: center;
 }
@@ -112,15 +113,17 @@
 }
 
 .shares {
+    justify-self: center;
     display: flex;
+    width: 95%;
     align-items: flex-end;
+    justify-content: space-between;
 }
 
 .shares>*:not(.btn-upload) {
     background-color: inherit;
     border-radius: 1em;
     padding: 5px;
-    margin-inline-end: 10px;
     border: 2px solid black;
     transition: .3s;
 }
@@ -128,6 +131,10 @@
 .btn-download {
     font-family: Arial;
     height: 29px;
+}
+
+.btn-share {
+    margin-inline-end: 0;
 }
 
 .shares>*:not(.btn-upload):hover {

@@ -52,5 +52,6 @@ function loadImageFromInput(ev) {
         gMeme.upload = event.target.result
         img.onload = () => renderMeme()
     }
+    openEditor()
     reader.readAsDataURL(ev.target.files[0]) 
 }
