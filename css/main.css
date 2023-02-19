@@ -131,10 +131,10 @@ body {
 }
 
 .btn-upload {
-    height: 100%;
-    font-size: 1.6rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    font-size: 1.6rem;
     background-color: rgb(168, 168, 168);
 }
 
