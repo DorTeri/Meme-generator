@@ -41,7 +41,7 @@
     </header>
     <section class="gallery-container container-layout">
         <div class="search-container search-layout">
-            <input data-trans="search" list="search-gallery" placeholder="Search" oninput="onSearchByName(this.value)">
+            <input type="search" data-trans="search" list="search-gallery" placeholder="Search" oninput="onSearchByName(this.value)">
             <button data-trans="flexible" class="btn-generate" onclick="onRandomMeme()">I'm flexible</button>
             <div class="words-container"></div>
             <button data-trans="show-more" class="btn-words" onclick="onShowMore(this)">Show more</button>
@@ -61,24 +61,24 @@
             <div class="line-edit">
                 <input type="text" id="txt-input" class="txt" name="txt" placeholder="Write here"
                     oninput="onSetLineTxt(this.value)">
-                <button class="btn btn-lines" onclick="onChangeLine()"><i
+                <button title="Switch line" class="btn btn-lines" onclick="onChangeLine()"><i
                         class="fa-solid fa-arrows-up-down"></i></button>
-                <button class="btn btn-add-line" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-                <button class="btn btn-remove-line" onclick="onRemoveLine()"><i class="fa-solid fa-trash"></i></button>
+                <button title="Add line" class="btn btn-add-line" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                <button title="Remove line" class="btn btn-remove-line" onclick="onRemoveLine()"><i class="fa-solid fa-trash"></i></button>
             </div>
             <!-- Txt edit -->
             <div class="txt-edit">
-                <button class="btn btn-increase-size" onclick="onChangeSize(1)">A+</button>
-                <button class="btn btn-decrease-size" onclick="onChangeSize(-1)">A-</button>
-                <img class="align" src="images/left.png" onclick="onChangeAlign('right')" alt="left">
-                <img class="align" src="images/center.png" onclick="onChangeAlign('center')" alt="center">
-                <img class="align" src="images/right.png" onclick="onChangeAlign('left')" alt="right">
-                <input list="fonts-list" id="list-fonts" name="fonts" class="list-fonts" placeholder="Impact"
+                <button title="Increase size" class="btn btn-increase-size" onclick="onChangeSize(1)">A+</button>
+                <button title="Decrease size" class="btn btn-decrease-size" onclick="onChangeSize(-1)">A-</button>
+                <img title="Align left" class="align" src="images/left.png" onclick="onChangeAlign('right')" alt="left">
+                <img title="Align center" class="align" src="images/center.png" onclick="onChangeAlign('center')" alt="center">
+                <img title="Align right" class="align" src="images/right.png" onclick="onChangeAlign('left')" alt="right">
+                <input type="search" list="fonts-list" id="list-fonts" name="fonts" class="list-fonts" placeholder="Impact"
                     onchange="onSetFont(this.value)">
                 <input type="color" class="hidden-clr" name="color-stroke" oninput="onChangeStroke(this.value)">
-                <button class="btn-stroke" onclick="onOpenStroke()">A</button>
+                <button title="Stroke color" class="btn-stroke" onclick="onOpenStroke()">A</button>
                 <input type="color" class="hidden-clr" name="color-picker" oninput="onChangeColor(this.value)">
-                <button class="btn-color" onclick="onOpenColor()"><i class="fa-solid fa-palette"></i></button>
+                <button title="Font color" class="btn-color" onclick="onOpenColor()"><i class="fa-solid fa-palette"></i></button>
             </div>
             <!-- Emojies -->
             <div class="emojies-list">
